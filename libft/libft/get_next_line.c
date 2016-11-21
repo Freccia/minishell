@@ -6,7 +6,7 @@
 /*   By: lfabbro <lfabbro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 13:53:42 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/02/22 16:26:44 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/21 21:07:49 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int				ft_init_save(t_save **save)
 	return (0);
 }
 
-static int				ft_return(t_save **ptr_save, t_save *save, char **line)
+static int				ft_return(t_save **ptr_save, t_save *save, char **line, int fd)
 {
 	long				test;
 
@@ -76,6 +76,8 @@ static int				ft_return(t_save **ptr_save, t_save *save, char **line)
 		*ptr_save = NULL;
 		return (0);
 	}
+	if (fd == 0)
+		*ptr_save = NULL;
 	return (1);
 }
 
@@ -96,5 +98,5 @@ int						get_next_line(int const fd, char **line)
 		save[fd]->ret = read(fd, save[fd]->buf + save[fd]->buf_len, BUFF_SIZE);
 		save[fd]->buf_len += save[fd]->ret;
 	}
-	return (ft_return(&save[fd], save[fd], line));
+	return (ft_return(&save[fd], save[fd], line, fd));
 }

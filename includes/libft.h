@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:44:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/28 10:38:30 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/21 19:06:37 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memchr(const void *str, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_realloc(void *str, size_t size);
+void				ft_free_tab(char **tab);
 
 /*
 **	NUMBERS
@@ -115,6 +116,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+void				ft_puttab(char **tab);
 
 /*
 **	LIST
@@ -130,7 +132,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 ** MATH
 */
 int					ft_abs(int num);
-int					ft_pow(int n, int p);
+long				ft_pow(int n, int p);
 
 /*
 ** OTHERS

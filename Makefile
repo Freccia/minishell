@@ -6,13 +6,13 @@
 #    By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/17 15:39:34 by lfabbro           #+#    #+#              #
-#    Updated: 2016/11/21 13:01:15 by lfabbro          ###   ########.fr        #
+#    Updated: 2016/11/21 19:11:10 by lfabbro          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 
+NAME = minishell
 
-SRC_NAME =
+SRC_NAME = main.c ft_parse.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -42,7 +42,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
 	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
-.PHONY: all lib clean fclean re libfclean
+.PHONY: all lib clean fclean re libfclean libclean
 
 lib:
 	@make -C ./libft
@@ -55,9 +55,13 @@ fclean: clean libfclean
 	@echo "\033[31;44m Removing $(NAME) executables \033[0m"
 	@rm -fv $(NAME)
 
+libclean:
+	@echo "\033[31;44m Removing $(LIB_PATH) objects \033[0m"
+	@make -C ./libft clean
+
 libfclean:
 	@echo "\033[31;44m Removing $(LIB_PATH) executables \033[0m"
-	make -C ./libft fclean
+	@make -C ./libft fclean
 
 re: fclean
 	@make all

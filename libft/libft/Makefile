@@ -58,6 +58,7 @@ SRC = ft_strlen.c\
 		ft_putstr.c\
 		ft_putendl.c\
 		ft_putnbr.c\
+		ft_puttab.c\
 		ft_putchar_fd.c\
 		ft_putendl_fd.c\
 		ft_putnbr_fd.c\
@@ -69,6 +70,7 @@ SRC = ft_strlen.c\
 		ft_lstadd.c\
 		ft_lstiter.c\
 		ft_lstmap.c\
+		ft_free_tab.c\
 		ft_wstrlen.c\
 		ft_abs.c\
 		ft_swap.c\
