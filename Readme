@@ -10,29 +10,27 @@ Authorized functions:
 	◦ signal, kill
 	◦ exit
 
-Sujet:
-	• Vous devez programmer un mini interpréteur de commandes UNIX.
-	• Cet interpréteur doit afficher un prompt (un simple "$> " par exemple) et attendre
-		que vous tapiez une ligne de commande, validée par un retour à la ligne.
-	• Le prompt n’est de nouveau affiché qu’après la fin de l’exécution de la commande.
-	• Les lignes de commande sont simples, pas de pipes, pas de redirections ou autres
-		fonctions avancées.
-	• Les exécutables sont ceux que l’on peut trouver dans les chemins indiqués dans la
-		variable PATH.
-	• Dans le cas où l’exécutable ne peut être trouvé, il faut afficher un message d’erreur
-		et réafficher le prompt.
-	• Vous devez gérer les erreurs sans utiliser errno, en affichant un message adapté
-		sur la sortie d’erreur.
-	• Vous devez gérer correctement le PATH et l’environnement (copie du char **environ
-		système).
-	• Vous devez implémenter une série de builtins : echo, cd, setenv, unsetenv, env,
-		exit.
-	• Vous choisissez le shell de référence que vous souhaitez.
+Mandatory part:
+	• You must program a mini UNIX command interpreter.
+	• This interpreter must display a prompt (a simple "$> " for example) and wait till
+		you type a command line, validated by pressing enter.
+	• The prompt is shown again only once the command has been completely executed.
+	• The command lines are simple, no pipes, no redirections or any other advanced
+		functions.
+	• The executable are those you can find in the paths indicated in the PATH variable.
+	• In cases where the executable cannot be found, it has to show an error message and
+		display the prompt again.
+	• You must manage the errors without using errno, by displaying a message adapted
+		to the error output.
+	• You must deal correctly with the PATH and the environment (copy of system char
+		**environ).
+	• You must implement a series of builtins: echo, cd, setenv, unsetenv, env, exit.
+	• You can choose as a reference whatever shell you prefer.
 
-Bonus:
-	• La gestion des signaux, et notamment Ctrl-C. L’utilisation de variables globales
-		est autorisé dans le cadre de la gestion des signaux.
-	• La gestion des droits d’exécution dans le PATH.
-	• La complétion.
-	• La séparation des commandes avec le " ;".
-	• D’autres bonus que vous jugez utiles.
+Bonus part:
+	• Management of signals and in particular Ctrl-C. The use of global variables is
+		allowed as part of this bonus.
+	• Management of execution rights in the PATH.
+	• Auto completion.
+	• The separation of commands with ";".
+	• Other bonuses that you will think to be useful.
