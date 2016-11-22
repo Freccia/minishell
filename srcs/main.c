@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 17:15:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/22 15:12:22 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/22 18:31:24 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,17 @@ int				main(int ac, char **av, char **env)
 	char	*line;
 
 	e.env = env;
+	e.ft_errno = 0;
+	e.ft_exit = 0;
 	ft_set_prompt(&e, ac, av);
 	ft_prompt(e);
-	while (get_next_line(0, &line) > 0)
+	while (get_next_line(0, &line) > 0 && e.exit == 0)
 	{
 		ft_parse_line(&e, line);
 		ft_prompt(e);
 		free(line);
 		line = NULL;
 	}
-	return (0);
+	free(line);
+	return (e.ft_errno);
 }

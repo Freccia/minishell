@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:44:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/28 10:45:44 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/22 17:07:43 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int					get_next_line(int fd, char **line);
 **	MEMORY
 */
 void				ft_bzero(void *s, size_t n);
+void				ft_free_tab(char **tab);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 void				*ft_memset(void *b, int c, size_t len);
@@ -88,6 +89,7 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
+char				*ft_strxtrim(char const *s, char x);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_strdup(const char *s1);
 char				*ft_strndup(const char *s1, size_t b);
@@ -111,6 +113,7 @@ int					ft_putchar(char c);
 int					ft_putstr(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
+void				ft_puttab(char **tab);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);

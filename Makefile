@@ -6,7 +6,7 @@
 #    By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/17 15:39:34 by lfabbro           #+#    #+#              #
-#    Updated: 2016/11/21 19:11:10 by lfabbro          ###   ########.fr        #
+#    Updated: 2016/11/22 17:00:53 by lfabbro          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIB_NAME = -lft
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
 LIB_PATH = ./libft/
-INC_PATH = ./includes ./libft/includes
+INC_PATH = ./includes ./libft/includes ./libft/libft
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
@@ -35,12 +35,8 @@ all: lib
 	@echo "\033[32;44m Make $(NAME) \033[0m"
 	@make $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(INC) $^ -o $@ $(LIB) $(LIB_NAME)
-
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+$(NAME):
+	$(CC) $(CFLAGS) $(INC) $(SRC) -o $(NAME) $(LIB) $(LIB_NAME)
 
 .PHONY: all lib clean fclean re libfclean libclean
 
