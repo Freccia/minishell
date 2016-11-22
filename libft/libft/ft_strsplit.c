@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 15:47:04 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/21 20:18:37 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/28 10:45:22 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char			**ft_strsplit(char const *s, char c)
 {
 	size_t	nw;
 
-	if (s && *s != '\0')
+	if (s)
 	{
 		nw = ft_split_count_words(s, c);
 		return (ft_split_return(s, c, nw));

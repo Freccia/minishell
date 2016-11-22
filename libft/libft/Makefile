@@ -64,13 +64,13 @@ SRC = ft_strlen.c\
 		ft_putnbr_fd.c\
 		ft_putstr_fd.c\
 		ft_memalloc.c\
+		ft_free_tab.c\
 		ft_lstnew.c\
 		ft_lstdelone.c\
 		ft_lstdel.c\
 		ft_lstadd.c\
 		ft_lstiter.c\
 		ft_lstmap.c\
-		ft_free_tab.c\
 		ft_wstrlen.c\
 		ft_abs.c\
 		ft_swap.c\

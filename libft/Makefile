@@ -32,17 +32,18 @@ OBJ_LIB_NAME = ft_strlen.o ft_strstr.o ft_strcpy.o ft_strdup.o ft_strndup.o\
 			   ft_strtrim.o ft_strsplit.o ft_itoa.o ft_putchar.o ft_putstr.o\
 			   ft_putendl.o ft_putnbr.o ft_puttab.o ft_putchar_fd.o\
 			   ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o\
+			   ft_memalloc.o ft_free_tab.o\
 			   ft_lstnew.o ft_lstdelone.o ft_lstdel.o ft_lstadd.o ft_lstiter.o\
 			   ft_lstmap.o ft_wstrlen.o ft_abs.o ft_swap.o\
-			   ft_memalloc.o ft_realloc.o ft_free_tab.o ft_getnbr.o\
-			   ft_wchar_size.o ft_nbrlen.o ft_getchar.o ft_getchar.o\
+			   ft_realloc.o ft_getnbr.o ft_wchar_size.o\
+			   ft_nbrlen.o ft_getchar.o ft_getchar.o\
 			   ft_atol.o ft_atoll.o ft_isnbr.o\
 			   get_next_line.o
 
 LIB_NAME = ft
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
-INC_PATH = ./includes/ ./libft/
+INC_PATH = ./includes/
 LIB_PATH = ./libft/
 
 CC = @gcc

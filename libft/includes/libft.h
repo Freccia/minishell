@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:44:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/28 10:45:44 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/28 10:38:30 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 ** MATH
 */
 int					ft_abs(int num);
-long				ft_pow(int n, int p);
+int					ft_pow(int n, int p);
 
 /*
 ** OTHERS
