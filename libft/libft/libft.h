@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:44:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/22 17:07:43 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/23 16:52:26 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int					get_next_line(int fd, char **line);
 **	MEMORY
 */
 void				ft_bzero(void *s, size_t n);
-void				ft_free_tab(char **tab);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 void				*ft_memset(void *b, int c, size_t len);
@@ -105,6 +104,14 @@ char				*ft_strnstr(const char *big, const char *little, \
 		size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+
+/*
+**	TAB
+*/
+size_t				ft_tablen(char **tab);
+char				**ft_tabnew(size_t size);
+char				**ft_tabdup(char **tab);
+void				ft_free_tab(char **tab);
 
 /*
 **	PUT

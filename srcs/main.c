@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 17:15:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/22 18:31:24 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/23 19:58:23 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,19 @@ static void		ft_prompt(t_env e)
 int				main(int ac, char **av, char **env)
 {
 	t_env	e;
-	char	*line;
 
 	e.env = env;
 	e.ft_errno = 0;
 	e.ft_exit = 0;
 	ft_set_prompt(&e, ac, av);
 	ft_prompt(e);
-	while (get_next_line(0, &line) > 0 && e.exit == 0)
+	while (get_next_line(0, &e.line) > 0 && e.exit == 0)
 	{
-		ft_parse_line(&e, line);
+		ft_parse_e.line(&e, e.line);
 		ft_prompt(e);
-		free(line);
-		line = NULL;
+		free(e.line);
+		e.line = NULL;
 	}
-	free(line);
+	free(e.line);
 	return (e.ft_errno);
 }

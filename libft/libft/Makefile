@@ -54,6 +54,10 @@ SRC = ft_strlen.c\
 		ft_strtrim.c\
 		ft_strxtrim.c\
 		ft_strsplit.c\
+		ft_tablen.c\
+		ft_tabnew.c\
+		ft_tabdup.c\
+		ft_free_tab.c\
 		ft_itoa.c\
 		ft_putchar.c\
 		ft_putstr.c\
@@ -65,7 +69,6 @@ SRC = ft_strlen.c\
 		ft_putnbr_fd.c\
 		ft_putstr_fd.c\
 		ft_memalloc.c\
-		ft_free_tab.c\
 		ft_lstnew.c\
 		ft_lstdelone.c\
 		ft_lstdel.c\
