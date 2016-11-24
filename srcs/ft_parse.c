@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 18:55:15 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/23 20:55:46 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/24 17:13:23 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int		ft_exec_builtin(t_env *e)
 	else if (!ft_strcmp(e->cmd[0], "setenv") && ++ret)
 		ft_setenv(e);
 	else if (!ft_strcmp(e->cmd[0], "unsetenv") && ++ret)
-		ft_unsetenv(e);
+		ft_unsetenv_blt(e);
 	else if (!ft_strcmp(e->cmd[0], "cd") && ++ret)
 		ft_chdir(e);
 	else if (!ft_strcmp(e->cmd[0], "echo") && ++ret)
@@ -56,7 +56,7 @@ int			ft_parse_line(t_env *e)
 		if ((ret = ft_exec_builtin(e)))
 			;
 		else
-			ret = ft_exec_cmd(e);
+			ret = ft_exec(e);
 	}
 	ft_free_tab(e->cmd);
 	return (ret);

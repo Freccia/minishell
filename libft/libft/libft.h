@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:44:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/23 16:52:26 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/24 17:01:37 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,11 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 */
 size_t				ft_tablen(char **tab);
 char				**ft_tabnew(size_t size);
+char				**ft_tabcpy(char **dst, char **src);
 char				**ft_tabdup(char **tab);
+char				**ft_tabndup(char **tab, size_t b);
+char				**ft_tabcat(char **tab, char *str);
+char				**ft_tabpop(char **tab, size_t pop);
 void				ft_free_tab(char **tab);
 
 /*

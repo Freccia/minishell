@@ -56,7 +56,11 @@ SRC = ft_strlen.c\
 		ft_strsplit.c\
 		ft_tablen.c\
 		ft_tabnew.c\
+		ft_tabcpy.c\
 		ft_tabdup.c\
+		ft_tabndup.c\
+		ft_tabcat.c\
+		ft_tabpop.c\
 		ft_free_tab.c\
 		ft_itoa.c\
 		ft_putchar.c\

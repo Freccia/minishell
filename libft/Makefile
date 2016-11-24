@@ -30,7 +30,8 @@ OBJ_LIB_NAME = ft_strlen.o ft_strstr.o ft_strcpy.o ft_strdup.o ft_strndup.o\
 			   ft_strdel.o ft_strclr.o ft_striter.o ft_striteri.o ft_strmap.o\
 			   ft_strmapi.o ft_strequ.o ft_strnequ.o ft_strsub.o ft_strjoin.o\
 			   ft_strtrim.o ft_strxtrim.o ft_strsplit.o ft_itoa.o\
-			   ft_free_tab.o ft_tablen.o ft_tabnew.o ft_tabdup.o\
+			   ft_free_tab.o ft_tablen.o ft_tabnew.o ft_tabdup.o ft_tabndup.o\
+			   ft_tabcpy.o ft_tabcat.o ft_tabpop.o\
 			   ft_putchar.o ft_putstr.o ft_putendl.o ft_putnbr.o ft_puttab.o\
 			   ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o\
 			   ft_memalloc.o\

@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabnew.c                                        :+:      :+:    :+:   */
+/*   ft_tabndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:45:41 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/24 17:29:43 by lfabbro          ###   ########.fr       */
+/*   Created: 2016/11/24 16:48:35 by lfabbro           #+#    #+#             */
+/*   Updated: 2016/11/24 17:03:06 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		**ft_tabnew(size_t size)
+char		**ft_tabndup(char **tab, size_t b)
 {
-	char	**new;
+	char	**dup;
+	size_t	len;
 	size_t	i;
 
-	i = 0;
-	if (size == 0 || (new = malloc(sizeof(new) * size)) == NULL)
+	if ((dup = ft_tabnew(b)) == NULL)
 		return (NULL);
-	while (i < size)
+	i = 0;
+	len = ft_tablen(tab);
+	while (i < b && i < len)
 	{
-		new[i] = NULL;
+		dup[i] = ft_strdup(tab[i]);
 		++i;
 	}
-	new[i] = NULL;
-	return (new);
+	dup[i] = NULL;
+	return (dup);
 }
