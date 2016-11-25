@@ -6,14 +6,14 @@
 #    By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/17 15:39:34 by lfabbro           #+#    #+#              #
-#    Updated: 2016/11/25 16:57:11 by lfabbro          ###   ########.fr        #
+#    Updated: 2016/11/25 20:04:47 by lfabbro          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-SRC_NAME = main.c ft_parse.c ft_env.c ft_setenv.c ft_unsetenv.c ft_exit.c\
-		   ft_error.c
+SRC_NAME = main.c ft_parse.c ft_env.c ft_setenv.c ft_unsetenv.c ft_exec.c\
+		   ft_tools.c ft_exit.c ft_error.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

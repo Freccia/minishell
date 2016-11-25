@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 17:05:01 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/25 18:55:00 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/25 20:41:30 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,18 @@ int			ft_unsetenv(char ***env, char *name)
 	pos = -1;
 	ptr = *env;
 	nameequ = ft_strjoin(name, "=");
-	while (ptr[++pos])
+	if (ptr && name)
 	{
-		if (ft_strnequ(ptr[pos], nameequ, ft_strlen(nameequ)))
+		while (ptr[++pos])
 		{
-			tmp = ft_tabpop(*env, pos);
-			ft_free_tab(*env);
-			*env = tmp;
-			free(nameequ);
-			return (0);
+			if (ft_strnequ(ptr[pos], nameequ, ft_strlen(nameequ)))
+			{
+				tmp = ft_tabpop(*env, pos);
+				ft_free_tab(*env);
+				*env = tmp;
+				free(nameequ);
+				return (0);
+			}
 		}
 	}
 	free(nameequ);
@@ -45,7 +48,15 @@ int			ft_unsetenv_blt(t_env *e)
 	if (e->cmd_len > 1)
 	{
 		while (++i < (int)e->cmd_len)
-			ft_unsetenv(&e->env, e->cmd[i]);
+		{
+			if (ft_strequ(e->cmd[i], "all"))
+			{
+				ft_free_tab(e->env);
+				e->env = NULL;
+			}
+			else
+				ft_unsetenv(&e->env, e->cmd[i]);
+		}
 		return (0);
 	}
 	return (ft_error("unsetenv", "too few arguments", NULL));

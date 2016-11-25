@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 13:10:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/25 18:15:02 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/25 20:43:17 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define SHELL_H
 
 # include			<unistd.h>
+# include			<dirent.h>
 # include			"libft.h"
 
-# define E_ILLOPT	44
-# define E_NOENT	45
+# define PATH		"/usr/bin:/bin:/usr/sbin:/sbin"
 
 typedef struct		s_env
 {
@@ -31,9 +31,14 @@ typedef struct		s_env
 }					t_env;
 
 int					ft_parse_line(t_env *e);
-
-//void				ft_exec_cmd(t_env *e);
+int					ft_exec(char **cmd, char **env);
 int					ft_error(char *util, char *msg, char *what);
+
+/*
+**		TOOLS
+*/
+char				*ft_find_value(char **tab, char *name);
+char				*ft_find_exec(char **paths, char *cmd);
 
 /*
 **		BUILTINS
