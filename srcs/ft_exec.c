@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:22:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/25 20:58:39 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/25 20:59:54 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,6 @@ char			**ft_find_paths(char **env)
 	}
 	return (paths);
 }
-
-//pid_t parent = getpid();
-//pid_t pid = fork();
-//
-//if (pid == -1)
-//{
-//		error, failed to fork()
-//} 
-//else if (pid > 0)
-//{
-//		int status;
-//		waitpid(pid, &status, 0);
-//}
-//else 
-//{
-//		// we are the child
-//		execve(...);
-//		_exit(EXIT_FAILURE);   // exec never returns
-//}
 
 int				ft_exec(char **cmd, char **env)
 {
