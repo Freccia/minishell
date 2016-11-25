@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:22:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/25 20:59:54 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/25 21:05:01 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,16 @@ int				ft_exec(char **cmd, char **env)
 	if ((exec = ft_find_exec(paths, cmd[0])) == NULL)
 		return (ft_error(cmd[0], "command not found", NULL));
 	parent = getpid();
-	pid = fork();
-	if (pid < 0)
+	if ((pid = fork()) < 0)
+	{
 		ft_error("fork", "failed to fork process", NULL);
+	}
 	else if (pid == 0)
 	{
-		ft_printf("execve executing %s\n", exec);
-		ft_printf("arguments:\n");
-		ft_printf("%s\n", cmd[1]);
-		ft_puttab(&cmd[1]);
-		execve(exec, &cmd[1], env);
+		execve(exec, &cmd[0], env);
 	}
 	else
 	{
-		ft_printf("waiting...\n");
 		waitpid(pid, &status, 0);
 	}
 	return (0);
