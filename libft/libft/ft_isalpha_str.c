@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabpop.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 16:46:56 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/25 17:46:00 by lfabbro          ###   ########.fr       */
+/*   Created: 2016/11/25 18:34:23 by lfabbro           #+#    #+#             */
+/*   Updated: 2016/11/25 18:35:20 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		**ft_tabpop(char **tab, size_t pop)
+int			ft_isalpha_str(char *str)
 {
-	char	**new;
-	size_t	i;
-
-	new = NULL;
-	i = -1;
-	if (tab)
+	while (*str)
 	{
-		new = ft_tabnew(ft_tablen(tab) - 1);
-		while (++i < pop && tab[i])
-		{
-			new[i] = ft_strdup(tab[i]);
-		}
-		while (tab[++i])
-		{
-			new[i - 1] = ft_strdup(tab[i]);
-		}
-		new[i - 1] = NULL;
+		if (!ft_isalpha(*str))
+			return (0);
+		++str;
 	}
-	return (new);
+	return (1);
 }

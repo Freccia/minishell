@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:44:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/24 17:01:37 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/25 18:36:30 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,10 @@ char				*ft_itoa(int n);
 char				*ft_itoa_base(int value, int base);
 char				*ft_imaxtoa_base(intmax_t value, int base, char set);
 char				*ft_uimaxtoa_base(uintmax_t value, int base, char set);
+
+/*
+**	IS .. WHAT?
+*/
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -69,6 +73,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+int					ft_isalpha_str(char *str);
 
 /*
 **	STR

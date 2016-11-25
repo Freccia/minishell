@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 13:10:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/24 17:18:58 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/25 18:15:02 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,24 @@ typedef struct		s_env
 	char			**cmd;
 	size_t			cmd_len;
 	int				ft_errno;
+	int				exit;
 }					t_env;
 
-int					ft_parse_line(t_env *e, char *line);
+int					ft_parse_line(t_env *e);
 
-void				ft_exec_cmd(t_env *e);
-int					ft_unsetenv(char ***env, char *name);
+//void				ft_exec_cmd(t_env *e);
+int					ft_error(char *util, char *msg, char *what);
 
 /*
 **		BUILTINS
 */
-int					ft_exit(t_env *e);
+void				ft_exit(t_env *e);
 int					ft_env(t_env *e);
-int					ft_setenv(t_env *e);
+int					ft_setenv_blt(t_env *e);
+int					ft_setenv(char ***env, char *name, char *value);
 int					ft_unsetenv_blt(t_env *e);
-int					ft_chdir(t_env *e);
-int					ft_echo(t_env *e);
+int					ft_unsetenv(char ***env, char *name);
+//int					ft_chdir(t_env *e);
+//int					ft_echo(t_env *e);
 
 #endif

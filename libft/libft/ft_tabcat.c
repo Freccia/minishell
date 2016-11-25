@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 16:35:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/24 17:28:23 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/25 17:42:56 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@ char		**ft_tabcat(char **tab, char *str)
 	size_t	len;
 
 	tmp = NULL;
-	if (tab && str)
+	if (tab && *tab && str)
 	{
-		len = ft_tablen(tab) + 1;
-		tmp = ft_tabnew(len);
-		ft_tabcpy(tmp, tab);
+		len = ft_tablen(tab);
+		tmp = ft_tabnew(len + 2);
+		tmp = ft_tabcpy(tmp, tab);
 		tmp[len] = ft_strdup(str);
+	}
+	else if (str)
+	{
+		tmp = ft_tabnew(2);
+		tmp[0] = ft_strdup(str);
 	}
 	return (tmp);
 }

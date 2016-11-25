@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 17:15:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/24 21:10:29 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/25 17:30:27 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int				main(int ac, char **av, char **env)
 {
 	t_env	e;
 
-	e.env = env;
+	e.env = ft_tabdup(env);
 	e.ft_errno = 0;
-	e.ft_exit = 0;
+	e.exit = 0;
 	ft_set_prompt(&e, ac, av);
 	ft_banner();
 	while (e.exit == 0)
@@ -65,7 +65,7 @@ int				main(int ac, char **av, char **env)
 		ft_prompt(e);
 		if (get_next_line(0, &e.line) > 0)
 		{
-			ft_parse_e.line(&e, e.line);
+			ft_parse_line(&e);
 			free(e.line);
 			e.line = NULL;
 		}
