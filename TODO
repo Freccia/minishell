@@ -2,3 +2,5 @@ handle signals.
 handle semicolon separated commands.
 cd.
 echo.
+
+(doesnt seem to find some commands).
