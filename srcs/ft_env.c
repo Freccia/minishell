@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 17:24:45 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/25 20:42:10 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/25 21:26:35 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,13 @@ static int	ft_env_opt(t_env *e, char ***env_cpy)
 	int		i;
 
 	i = 0;
-	while (++i < (int)e->cmd_len && e->cmd[i][0] == '-')
+	while (++i < (int)e->cmd_len && e->cmd[i] && e->cmd[i][0] == '-')
 	{
-		if (e->cmd[i][1] == 'u' && e->cmd[++i])
-			ft_unsetenv(env_cpy, e->cmd[i]);
+		if (e->cmd[i][1] == 'u' && e->cmd[i + 1])
+		{
+			ft_unsetenv(env_cpy, e->cmd[i + 1]);
+			++i;
+		}
 		else if (e->cmd[i][1] == 'i')
 			return (ft_opt_i(e, env_cpy, i));
 	}
