@@ -6,55 +6,11 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 20:03:34 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/25 20:58:40 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/26 15:02:47 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-static char		*ft_find_exec_readdir(DIR *dir, char *cmd)
-{
-	struct dirent	*dirent;
-
-	while ((dirent = readdir(dir)) != NULL)
-	{
-		if (ft_strequ(dirent->d_name, cmd))
-		{
-			return (ft_strdup(dirent->d_name));
-		}
-	}
-	return (NULL);
-}
-
-char			*ft_find_exec(char **paths, char *cmd)
-{
-	DIR				*dir;
-	char			*exec;
-	char			*path;
-	char			*tmp;
-	int				i;
-
-	i = -1;
-	exec = NULL;
-	path = NULL;
-	while (paths[++i])
-	{
-		if ((dir = opendir(paths[i])) != NULL)
-		{
-			exec = ft_find_exec_readdir(dir, cmd);
-			if (closedir(dir))
-				ft_error("closedir", "failed closing dir", paths[i]);
-			if (exec != NULL)
-			{
-				tmp = ft_strjoin(paths[i], "/");
-				path = ft_strjoin(tmp, exec);
-				free(tmp);
-				return (path);
-			}
-		}
-	}
-	return (path);
-}
 
 char		*ft_find_value(char **tab, char *name)
 {
@@ -71,7 +27,7 @@ char		*ft_find_value(char **tab, char *name)
 		{
 			if (ft_strnequ(tab[i], entry, ft_strlen(entry)))
 			{
-				value = ft_strdup(ft_strchr(tab[i], '='));
+				value = ft_strdup(ft_strchr(tab[i], '=') + 1);
 				free(entry);
 				return (value);
 			}
