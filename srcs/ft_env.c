@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 17:24:45 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/25 21:26:35 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/28 12:29:43 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static int	ft_opt_i(t_env *e, char ***env_cpy, int i)
 	{
 		if (e->cmd[i][0] == '=')
 			return (ft_error("env", "invalid argument", e->cmd[i]));
-		tmp = *env_cpy;
-		*env_cpy = ft_tabcat(*env_cpy, e->cmd[i]);
-		ft_free_tab(tmp);
+		tmp = ft_tabcat(tmp, e->cmd[i]);
+		ft_free_tab(*env_cpy);
+		*env_cpy = tmp;
 	}
 	if (i == (int)e->cmd_len)
 	{
@@ -69,10 +69,11 @@ int			ft_env(t_env *e)
 		if ((i = ft_env_opt(e, &env_cpy)) > 0)
 		{
 			if (e->cmd[i])
-				ft_exec(&e->cmd[i], env_cpy);
+				e->cmd_exit_stat = ft_exec(&e->cmd[i], env_cpy);
 		}
 	}
 	else
 		ft_puttab(e->env);
+	ft_free_tab(env_cpy);
 	return (0);
 }

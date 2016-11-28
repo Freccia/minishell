@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:22:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/26 15:03:11 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/28 11:39:05 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char			*ft_find_exec(char **paths, char *cmd)
 				tmp = ft_strjoin(paths[i], "/");
 				path = ft_strjoin(tmp, exec);
 				free(tmp);
+				free(exec);
 				return (path);
 			}
 		}
@@ -83,7 +84,10 @@ int				ft_exec(char **cmd, char **env)
 
 	paths = ft_find_paths(env);
 	if ((exec = ft_find_exec(paths, cmd[0])) == NULL)
+	{
+		ft_free_tab(paths);
 		return (ft_error(cmd[0], "command not found", NULL));
+	}
 	parent = getpid();
 	if ((pid = fork()) < 0)
 	{
@@ -93,9 +97,8 @@ int				ft_exec(char **cmd, char **env)
 	{
 		execve(exec, &cmd[0], env);
 	}
-	else
-	{
-		waitpid(pid, &status, 0);
-	}
-	return (0);
+	waitpid(pid, &status, 0);
+	ft_free_tab(paths);
+	free(exec);
+	return (status);
 }

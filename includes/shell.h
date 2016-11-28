@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 13:10:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/25 20:43:17 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/28 11:33:32 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include			<unistd.h>
 # include			<dirent.h>
+# include			<sys/wait.h>
 # include			"libft.h"
 
 # define PATH		"/usr/bin:/bin:/usr/sbin:/sbin"
@@ -24,8 +25,10 @@ typedef struct		s_env
 	char			*line;
 	char			*prompt;
 	char			**env;
+	char			**cmds;
 	char			**cmd;
 	size_t			cmd_len;
+	int				cmd_exit_stat;
 	int				ft_errno;
 	int				exit;
 }					t_env;

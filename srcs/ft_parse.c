@@ -6,21 +6,38 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 18:55:15 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/25 20:57:01 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/28 11:45:49 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+static int		ft_subspecials(char ***cmd)
+{
+	int		i;
+
+	i = -1;
+	while (*cmd[++i])
+	{
+		if (ft_strstr(*cmd[i], "$$"))
+		{
+			ft_subspec();
+		}
+	}
+	return (0);
+}
+*/
 
 static size_t	ft_parse_cmd(t_env *e)
 {
 	char	*trline;
 
 	trline = ft_strxtrim(e->line, '\t');
-	e->cmd = ft_strsplit(trline, ' ');
+	e->cmds = ft_strsplit(trline, ';');
+//	ft_subspecials(&e->cmd);
 	free(trline);
-	e->cmd_len = ft_tablen(e->cmd);
-	return (e->cmd_len);
+	return ((e->cmds == NULL) ? 0 : 1);
 }
 
 static int		ft_exec_builtin(t_env *e)
@@ -47,16 +64,25 @@ static int		ft_exec_builtin(t_env *e)
 
 int			ft_parse_line(t_env *e)
 {
+	int		i;
 	int		ret;
 
+	i = -1;
 	ret = 0;
 	if (ft_parse_cmd(e))
 	{
-		if ((ret = ft_exec_builtin(e)))
-			;
-		else
-			ft_exec(e->cmd, e->env);
+		while (e->cmds[++i])
+		{
+			e->cmd = ft_strsplit(e->cmds[i], ' ');
+			e->cmd_len = ft_tablen(e->cmd);
+			if ((ret = ft_exec_builtin(e)))
+				;
+			else
+				e->cmd_exit_stat = ft_exec(e->cmd, e->env);
+			ft_free_tab(e->cmd);
+		}
 	}
-	ft_free_tab(e->cmd);
+	ft_free_tab(e->cmds);
+	e->cmds = NULL;
 	return (ret);
 }
