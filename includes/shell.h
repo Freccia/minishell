@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 13:10:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/28 15:10:19 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/28 17:28:11 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@
 
 typedef struct		s_env
 {
-	char			*line;
-	char			*prompt;
+	int				x;
+	int				exit;
 	char			**env;
-	char			**cmds;
+	char			*prompt;
+	char			*line;
 	char			**cmd;
 	size_t			cmd_len;
 	int				cmd_exit_stat;
-	int				ft_errno;
-	int				exit;
 }					t_env;
 
 int					ft_parse_line(t_env *e);
@@ -40,8 +39,9 @@ int					ft_error(char *util, char *msg, char *what);
 /*
 **		TOOLS
 */
+void				ft_env_free(t_env *e);
 char				*ft_find_value(char **tab, char *name);
-char				*ft_find_exec(char **paths, char *cmd);
+//char				*ft_find_exec(char **paths, char *cmd);
 
 /*
 **		BUILTINS

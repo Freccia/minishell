@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 17:24:45 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/28 15:12:35 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/28 17:28:06 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	ft_arglen(t_env *e, int i)
 	return (len);
 }
 
-static int		ft_cmd_isdouble(char **args, char *arg, int i)
+static int		ft_arg_isdouble(char **args, char *arg, int i)
 {
 	char	*eval;
 	char	**tmp;
@@ -38,8 +38,8 @@ static int		ft_cmd_isdouble(char **args, char *arg, int i)
 
 static int		ft_opt_i(t_env *e, char ***env_cpy, int i)
 {
-	size_t	len;
 	char	**ptr;
+	size_t	len;
 	int		j;
 
 	len = ft_arglen(e, i);
@@ -51,7 +51,7 @@ static int		ft_opt_i(t_env *e, char ***env_cpy, int i)
 	{
 		if (e->cmd[i][0] == '=')
 			return (ft_error("env", "invalid argument", e->cmd[i]));
-		if (!ft_cmd_isdouble(e->cmd, e->cmd[i], i))
+		if (!ft_arg_isdouble(e->cmd, e->cmd[i], i))
 		{
 			ptr[j] = ft_strdup(e->cmd[i]);
 			++j;

@@ -6,11 +6,25 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 18:55:15 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/28 14:25:43 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/28 15:26:22 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+ * $1, $2, $3, ... are the positional parameters.
+ * "$@" is an array-like construct of all positional parameters, {$1, $2, $3 ...}.
+ * "$*" is the IFS expansion of all positional parameters, $1 $2 $3 ....
+ * $# is the number of positional parameters.
+ * $- current options set for the shell.
+ * $$ pid of the current shell (not subshell).
+ * $_ most recent parameter (or the abs path of the command to start the current shell immediately after startup).
+ * $IFS is the (input) field separator.
+ * $? is the most recent foreground pipeline exit status.
+ * $! is the PID of the most recent background command.
+ * $0 is the name of the shell or shell script.
+ */
 
 /*
 static int		ft_subspecials(char ***cmd)
@@ -29,15 +43,16 @@ static int		ft_subspecials(char ***cmd)
 }
 */
 
-static size_t	ft_parse_cmd(t_env *e)
+static char		**ft_parse_cmd(t_env *e)
 {
+	char	**cmds;
 	char	*trline;
 
 	trline = ft_strxtrim(e->line, '\t');
-	e->cmds = ft_strsplit(trline, ';');
+	cmds = ft_strsplit(trline, ';');
 //	ft_subspecials(&e->cmd);
 	free(trline);
-	return ((e->cmds == NULL) ? 0 : 1);
+	return (cmds);
 }
 
 static int		ft_exec_builtin(t_env *e)
@@ -66,14 +81,15 @@ int			ft_parse_line(t_env *e)
 {
 	int		i;
 	int		ret;
+	char	**cmds;
 
 	i = -1;
 	ret = 0;
-	if (ft_parse_cmd(e))
+	if ((cmds = ft_parse_cmd(e)) != NULL)
 	{
-		while (e->cmds[++i])
+		while (cmds[++i])
 		{
-			e->cmd = ft_strsplit(e->cmds[i], ' ');
+			e->cmd = ft_strsplit(cmds[i], ' ');
 			e->cmd_len = ft_tablen(e->cmd);
 			if ((ret = ft_exec_builtin(e)))
 				;
@@ -82,7 +98,5 @@ int			ft_parse_line(t_env *e)
 			ft_free_tab(e->cmd);
 		}
 	}
-	ft_free_tab(e->cmds);
-	e->cmds = NULL;
 	return (ret);
 }
