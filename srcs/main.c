@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 17:15:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/28 17:28:09 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/28 17:45:28 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,16 @@ static void		ft_init(t_env *e, int ac, char **av, char **env)
 	e->exit = 0;
 	e->env = ft_tabdup(env);
 	ft_set_prompt(e, ac, av);
+	if (e->env == NULL || !ft_set_home(e))
+		ft_error("minishell", "warning: no home set", NULL);
 }
 
 int				main(int ac, char **av, char **env)
 {
 	t_env	e;
 
-	ft_init(&e, ac, av, env);
 	ft_banner();
+	ft_init(&e, ac, av, env);
 	while (e.x)
 	{
 		ft_prompt(e);

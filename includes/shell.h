@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 13:10:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/28 17:28:11 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/28 17:40:48 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "libft.h"
 
 # define PATH		"/usr/bin:/bin:/usr/sbin:/sbin"
+# define HOME		"HOME="
 
 typedef struct		s_env
 {
@@ -26,6 +27,7 @@ typedef struct		s_env
 	int				exit;
 	char			**env;
 	char			*prompt;
+	char			*home;
 	char			*line;
 	char			**cmd;
 	size_t			cmd_len;
@@ -39,6 +41,7 @@ int					ft_error(char *util, char *msg, char *what);
 /*
 **		TOOLS
 */
+int					ft_set_home(t_env *e);
 void				ft_env_free(t_env *e);
 char				*ft_find_value(char **tab, char *name);
 //char				*ft_find_exec(char **paths, char *cmd);

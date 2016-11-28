@@ -6,11 +6,29 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 20:03:34 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/28 16:39:44 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/28 17:45:18 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+int			ft_set_home(t_env *e)
+{
+	int			i;
+	static char	home[5] = "HOME=";
+
+	i = -1;
+	e->home = NULL;
+	while (e->env[++i])
+	{
+		if (ft_strnequ(e->env[i], home, ft_strlen(home)))
+		{
+			e->home = ft_strdup(e->env[i]);
+			return (1);
+		}
+	}
+	return (0);
+}
 
 void		ft_env_free(t_env *e)
 {
