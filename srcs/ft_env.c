@@ -6,28 +6,58 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 17:24:45 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/28 12:29:43 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/28 15:12:35 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int	ft_opt_i(t_env *e, char ***env_cpy, int i)
+static size_t	ft_arglen(t_env *e, int i)
 {
+	size_t	len;
+
+	len = (size_t)i;
+	while (++len < e->cmd_len && ft_strchr(e->cmd[len], '='))
+		;
+	return (len);
+}
+
+static int		ft_cmd_isdouble(char **args, char *arg, int i)
+{
+	char	*eval;
 	char	**tmp;
 
-	tmp = NULL;
+	tmp = ft_strsplit(arg, '=');
+	eval = ft_strjoin(tmp[0], "=");
+	ft_free_tab(tmp);
+	while (args[++i])
+		if (ft_strnequ(args[i], eval, ft_strlen(eval)))
+			return (1);
+	return (0);
+}
+
+static int		ft_opt_i(t_env *e, char ***env_cpy, int i)
+{
+	size_t	len;
+	char	**ptr;
+	int		j;
+
+	len = ft_arglen(e, i);
 	ft_free_tab(*env_cpy);
-	*env_cpy = NULL;
-	while (++i < (int)e->cmd_len && ft_strchr(e->cmd[i], '='))
+	*env_cpy = ft_tabnew(len + 1);
+	ptr = *env_cpy;
+	j = 0;
+	while (++i < (int)len)
 	{
 		if (e->cmd[i][0] == '=')
 			return (ft_error("env", "invalid argument", e->cmd[i]));
-		tmp = ft_tabcat(tmp, e->cmd[i]);
-		ft_free_tab(*env_cpy);
-		*env_cpy = tmp;
+		if (!ft_cmd_isdouble(e->cmd, e->cmd[i], i))
+		{
+			ptr[j] = ft_strdup(e->cmd[i]);
+			++j;
+		}
 	}
-	if (i == (int)e->cmd_len)
+	if (len == e->cmd_len)
 	{
 		ft_puttab(*env_cpy);
 		return (-1);
@@ -35,7 +65,7 @@ static int	ft_opt_i(t_env *e, char ***env_cpy, int i)
 	return (i);
 }
 
-static int	ft_env_opt(t_env *e, char ***env_cpy)
+static int		ft_env_opt(t_env *e, char ***env_cpy)
 {
 	int		i;
 
@@ -58,7 +88,7 @@ static int	ft_env_opt(t_env *e, char ***env_cpy)
 	return (i);
 }
 
-int			ft_env(t_env *e)
+int				ft_env(t_env *e)
 {
 	char	**env_cpy;
 	int		i;
