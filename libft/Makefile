@@ -24,7 +24,7 @@ OBJ_LIB_NAME = ft_strlen.o ft_strstr.o ft_strcpy.o ft_strdup.o ft_strndup.o\
 			   ft_strcat.o ft_strcmp.o ft_strncpy.o ft_strncat.o ft_strlcat.o\
 			   ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o\
 			   ft_itoa_base.o ft_imaxtoa_base.o ft_uimaxtoa_base.o ft_isalpha.o\
-			   ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o\
+			   ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_issticky.o\
 			   ft_isalpha_str.o\
 			   ft_toupper.o ft_tolower.o\
 			   ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o\

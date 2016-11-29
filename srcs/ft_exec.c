@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:22:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/28 17:28:14 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/29 17:25:37 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char		*ft_find_exec_readdir(DIR *dir, char *cmd)
 	return (NULL);
 }
 
-char			*ft_find_exec(char **paths, char *cmd)
+static char		*ft_find_exec(char **paths, char *cmd)
 {
 	DIR				*dir;
 	char			*exec;
@@ -54,10 +54,10 @@ char			*ft_find_exec(char **paths, char *cmd)
 			}
 		}
 	}
-	return (path);
+	return (NULL);
 }
 
-char			**ft_find_paths(char **env)
+static char		**ft_find_paths(char **env)
 {
 	char	*value;
 	char	**paths;
@@ -74,21 +74,12 @@ char			**ft_find_paths(char **env)
 	return (paths);
 }
 
-int				ft_exec(char **cmd, char **env)
+static int		ft_fork_exec(char *exec, char **cmd, char **env)
 {
-//	pid_t	parent;
 	pid_t	pid;
 	int		status;
-	char	**paths;
-	char	*exec;
 
-	paths = ft_find_paths(env);
-	if ((exec = ft_find_exec(paths, cmd[0])) == NULL)
-	{
-		ft_free_tab(paths);
-		return (ft_error(cmd[0], "command not found", NULL));
-	}
-//	parent = getpid();
+	status = 0;
 	if ((pid = fork()) < 0)
 	{
 		ft_error("fork", "failed to fork process", NULL);
@@ -98,6 +89,28 @@ int				ft_exec(char **cmd, char **env)
 		execve(exec, &cmd[0], env);
 	}
 	waitpid(pid, &status, 0);
+	return (0);
+}
+
+int				ft_exec(char **cmd, char **env)
+{
+	int		status;
+	char	**paths;
+	char	*exec;
+
+	status = 0;
+	paths = ft_find_paths(env);
+	if ((exec = ft_find_exec(paths, cmd[0])) == NULL)
+	{
+		ft_free_tab(paths);
+		return (ft_error(cmd[0], "command not found", NULL));
+	}
+	if (access(exec, X_OK) == 0 || ft_issticky(exec))
+	{
+		status = ft_fork_exec(exec, cmd, env);
+	}
+	else
+		ft_error(exec, "permission denied", NULL);
 	ft_free_tab(paths);
 	free(exec);
 	return (status);
