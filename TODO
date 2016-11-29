@@ -1,4 +1,3 @@
-handle signals.
-handle semicolon separated commands.
-cd.
+cd. (ok but test it more)
 echo.
+handle launching exec with path.
