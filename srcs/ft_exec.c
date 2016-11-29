@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:22:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/29 17:25:37 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/29 19:12:45 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,13 @@ int				ft_exec(char **cmd, char **env)
 	char	*exec;
 
 	status = 0;
+	exec = NULL;
 	paths = ft_find_paths(env);
-	if ((exec = ft_find_exec(paths, cmd[0])) == NULL)
+	if (cmd[0][0] == '.' || cmd[0][0] == '/')
+		exec = ft_strdup(cmd[0]);
+	else
+		exec = ft_find_exec(paths, cmd[0]);
+	if (exec == NULL)
 	{
 		ft_free_tab(paths);
 		return (ft_error(cmd[0], "command not found", NULL));

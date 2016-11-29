@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 17:15:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/29 18:25:15 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/29 19:17:13 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ static void		ft_prompt(t_env e)
 
 static void		ft_init(t_env *e, int ac, char **av, char **env)
 {
+	char	*lvl;
+	int		tmp;
+
 	e->x = 1;
 	e->exit = 0;
 	e->line = NULL;
@@ -60,6 +63,14 @@ static void		ft_init(t_env *e, int ac, char **av, char **env)
 	ft_set_prompt(e, ac, av);
 	if (e->env == NULL || !ft_set_home(e))
 		ft_error("minishell", "warning: no home set", NULL);
+	if ((lvl = ft_find_value(e->env, "SHLVL")))
+	{
+		tmp = ft_atoi(lvl) + 1;
+		free(lvl);
+		lvl = ft_itoa(tmp);
+		ft_unsetenv(&e->env, "SHLVL");
+		ft_setenv(&e->env, "SHLVL", lvl);
+	}
 }
 
 int				main(int ac, char **av, char **env)
