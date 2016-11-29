@@ -60,8 +60,8 @@ long				ft_atol(const char *str);
 long long			ft_atoll(const char *str);
 char				*ft_itoa(int n);
 char				*ft_itoa_base(int value, int base);
-char				*ft_imaxtoa_base(intmax_t value, int base, char set);
-char				*ft_uimaxtoa_base(uintmax_t value, int base, char set);
+char				*ft_imaxtoa_base(long long value, int base, char set);
+char				*ft_uimaxtoa_base(long long value, int base, char set);
 
 /*
 **	IS .. WHAT?

@@ -55,10 +55,20 @@ static void		ft_init(t_env *e, int ac, char **av, char **env)
 {
 	e->x = 1;
 	e->exit = 0;
+	e->line = NULL;
 	e->env = ft_tabdup(env);
 	ft_set_prompt(e, ac, av);
 	if (e->env == NULL || !ft_set_home(e))
 		ft_error("minishell", "warning: no home set", NULL);
+}
+
+static void		ft_set_sig_handler(void)
+{
+	int		sig;
+
+	sig = 0;
+	while (++sig < 31)
+		signal(sig, ft_sig_handler);
 }
 
 int				main(int ac, char **av, char **env)
@@ -67,6 +77,7 @@ int				main(int ac, char **av, char **env)
 
 	ft_banner();
 	ft_init(&e, ac, av, env);
+	ft_set_sig_handler();
 	while (e.x)
 	{
 		ft_prompt(e);
@@ -74,6 +85,8 @@ int				main(int ac, char **av, char **env)
 		{
 			ft_parse_line(&e);
 		}
+		if (e.line == NULL)
+			break ;
 		free(e.line);
 		e.line = NULL;
 	}

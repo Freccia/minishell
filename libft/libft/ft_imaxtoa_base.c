@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		get_size(intmax_t value, int base)
+static int		get_size(long long value, int base)
 {
 	int			size;
 
@@ -40,11 +40,11 @@ static char		*return_zero(void)
 	return (num);
 }
 
-static char		*imaxtoa_base_return(intmax_t value, int base, char set)
+static char		*imaxtoa_base_return(long long value, int base, char set)
 {
 	int			size;
 	char		*num;
-	uintmax_t	uvalue;
+	long long		uvalue;
 
 	size = get_size(value, base);
 	uvalue = value;
@@ -66,7 +66,7 @@ static char		*imaxtoa_base_return(intmax_t value, int base, char set)
 	return (num);
 }
 
-char			*ft_imaxtoa_base(intmax_t value, int base, char set)
+char			*ft_imaxtoa_base(long long value, int base, char set)
 {
 	if (base < 2 || base > 16)
 		return (NULL);

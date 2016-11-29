@@ -76,7 +76,7 @@ char			**ft_find_paths(char **env)
 
 int				ft_exec(char **cmd, char **env)
 {
-	pid_t	parent;
+//	pid_t	parent;
 	pid_t	pid;
 	int		status;
 	char	**paths;
@@ -88,7 +88,7 @@ int				ft_exec(char **cmd, char **env)
 		ft_free_tab(paths);
 		return (ft_error(cmd[0], "command not found", NULL));
 	}
-	parent = getpid();
+//	parent = getpid();
 	if ((pid = fork()) < 0)
 	{
 		ft_error("fork", "failed to fork process", NULL);

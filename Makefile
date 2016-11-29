@@ -13,7 +13,7 @@
 NAME = minishell
 
 SRC_NAME = main.c ft_parse.c ft_env.c ft_setenv.c ft_unsetenv.c ft_exec.c\
-		   ft_tools.c ft_exit.c ft_error.c
+		   ft_tools.c ft_signal.c ft_exit.c ft_error.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
