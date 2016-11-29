@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 20:03:34 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/29 18:56:16 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/29 19:29:04 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,6 @@ int			ft_issetenv(char **env, char *name)
 	{
 		free(tmp);
 		return (1);
-	}
-	free(tmp);
-	return (0);
-}
-
-int			ft_set_home(t_env *e)
-{
-	char		*tmp;
-
-	e->home = NULL;
-	if ((tmp = ft_find_name(e->env, "HOME")))
-	{
-			e->home = ft_strdup(ft_strchr(tmp, '=') + 1);
-			free(tmp);
-			return (1);
 	}
 	free(tmp);
 	return (0);

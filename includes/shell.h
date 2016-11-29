@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 13:10:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/29 18:56:28 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/29 20:09:14 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ int					ft_exec(char **cmd, char **env);
 int					ft_error(char *util, char *msg, char *what);
 
 /*
+**		Init
+*/
+void				ft_init(t_env *e, int ac, char **av, char **env);
+
+/*
 **		Signals
 */
 void				ft_set_sig_handler(void);
@@ -48,7 +53,6 @@ void				ft_sig_handler(int sig);
 **		Tools
 */
 int					ft_issetenv(char **env, char *name);
-int					ft_set_home(t_env *e);
 void				ft_env_free(t_env *e);
 char				*ft_find_name(char **env, char *name);
 char				*ft_find_value(char **env, char *name);
