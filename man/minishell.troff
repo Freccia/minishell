@@ -1,0 +1,41 @@
+.TH MINISHELL 1
+.SH NAME
+minishell \- C shell (mini format)
+.SH SYNOPSIS
+.B minishell
+[\fB\-no\fR \fIOPTIONS\fR]
+.IR file ...
+.SH DESCRIPTION
+.B minishell
+minishell is a very little shell.
+It was conceived for educational purposes,
+it is not indended to be used as a shell for everyday usage.
+Btw it will be developed over time, adding functionalities and improovements.
+For now it supports basics builtins and command execution.
+It does not support pipeing, redirections, auto-completions.
+But those features will be developed lately.
+-- So basically for now it sucks. --.
+.SH BUILTINS
+.TP 4
+.B cd \fI[|file ...]\fR
+Change directory.
+"\fBcd \-\fR" will return to old pwd.
+.TP 4
+.B env \fI[-u name] [-i name1=val1 ... ] exec\fR
+.br
+Show environment table whithout \fIexec\fR argument.
+Option \fI-u\fR is the same as \fIunsetenv\fR.
+Option \fI-i\fR unsetenv all and setenv arguments.
+.TP 4
+.B setenv \fI[name] [value]\fR
+Sets enviroment variable "\fIname\fR" = "\fIvalue\fR".
+.TP 4
+.B unsetenv \fI[name|all]\fR
+Unsets enviroment variable "\fIname\fR"
+.TP 4
+.B echo \fIphrase\fR
+Write "\fIphrase\fR" to stdout. (redirection not supported... yet)
+.TP 4
+.B exit \fI[|n]\fR
+Exists shell returning \fIn\fR or \fI0\fR if it is not specified.
+
