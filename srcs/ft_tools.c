@@ -6,27 +6,37 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 20:03:34 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/29 17:29:25 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/29 18:56:16 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+int			ft_issetenv(char **env, char *name)
+{
+	char	*tmp;
+
+	if ((tmp = ft_find_name(env, name)))
+	{
+		free(tmp);
+		return (1);
+	}
+	free(tmp);
+	return (0);
+}
+
 int			ft_set_home(t_env *e)
 {
-	int			i;
-	static char	home[5] = "HOME=";
+	char		*tmp;
 
-	i = -1;
 	e->home = NULL;
-	while (e->env[++i])
+	if ((tmp = ft_find_name(e->env, "HOME")))
 	{
-		if (ft_strnequ(e->env[i], home, ft_strlen(home)))
-		{
-			e->home = ft_strdup(e->env[i]);
+			e->home = ft_strdup(ft_strchr(tmp, '=') + 1);
+			free(tmp);
 			return (1);
-		}
 	}
+	free(tmp);
 	return (0);
 }
 
@@ -38,27 +48,38 @@ void		ft_env_free(t_env *e)
 	ft_free_tab(e->env);
 }
 
-char		*ft_find_value(char **tab, char *name)
+char		*ft_find_name(char **env, char *name)
 {
 	char	*eval;
-	char	*value;
 	int		i;
 
 	i = -1;
 	eval = ft_strjoin(name, "=");
-	value = NULL;
-	if (tab)
+	if (env)
 	{
-		while (tab[++i])
+		while (env[++i])
 		{
-			if (ft_strnequ(tab[i], eval, ft_strlen(eval)))
+			if (ft_strnequ(env[i], eval, ft_strlen(eval)))
 			{
-				value = ft_strdup(ft_strchr(tab[i], '=') + 1);
 				free(eval);
-				return (value);
+				return (ft_strdup(env[i]));
 			}
 		}
 	}
 	free(eval);
+	return (NULL);
+}
+
+char		*ft_find_value(char **env, char *name)
+{
+	char	*value;
+	char	*tmp;
+
+	value = NULL;
+	if ((tmp = ft_find_name(env, name)) != NULL)
+	{
+		value = ft_strdup(ft_strchr(tmp, '=') + 1);
+		free(tmp);
+	}
 	return (value);
 }

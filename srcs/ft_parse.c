@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 18:55:15 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/28 15:26:22 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/29 18:10:29 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ static int		ft_exec_builtin(t_env *e)
 		ft_setenv_blt(e);
 	else if (ft_strequ(e->cmd[0], "unsetenv") && ++ret)
 		ft_unsetenv_blt(e);
-	/*
 	else if (ft_strequ(e->cmd[0], "cd") && ++ret)
 		ft_chdir(e);
+	/*
 	else if (ft_strequ(e->cmd[0], "echo") && ++ret)
 		ft_echo(e);
 		*/

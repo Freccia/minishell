@@ -6,23 +6,11 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 19:58:35 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/28 15:10:27 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/29 17:38:08 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-/*
- 	ft_putstr_fd(util, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putstr_fd(msg, 2);
-	if (what)
-	{
-		ft_putchar_fd(' ', 2);
-		ft_putstr_fd(what, 2);
-	}
-	ft_putchar('\n');
-*/
 
 int		ft_error(char *util, char *msg, char *what)
 {
