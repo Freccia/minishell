@@ -39,6 +39,7 @@ typedef struct		s_env
 int					ft_parse_line(t_env *e);
 int					ft_exec(char **cmd, char **env);
 int					ft_error(char *util, char *msg, char *what);
+void				ft_set_sig_handler(void);
 void				ft_sig_handler(int sig);
 
 /*

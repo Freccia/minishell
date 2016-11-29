@@ -62,15 +62,6 @@ static void		ft_init(t_env *e, int ac, char **av, char **env)
 		ft_error("minishell", "warning: no home set", NULL);
 }
 
-static void		ft_set_sig_handler(void)
-{
-	int		sig;
-
-	sig = 0;
-	while (++sig < 31)
-		signal(sig, ft_sig_handler);
-}
-
 int				main(int ac, char **av, char **env)
 {
 	t_env	e;
