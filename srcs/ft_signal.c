@@ -6,31 +6,50 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 17:31:41 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/30 19:04:52 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/30 22:24:06 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include "shell.h"
 
-static char	*ft_sig_msg(int sig)
+static int	ft_sigcheck(int sig)
 {
-	char	*msg[] = {"Interrupted", "Illegal istruction", \
-			"Trace trap", "Aborted", "Floating point exception", \
-			"Killed", "Bus error", "Segmentation fault", \
-			"Non-existent sys call", "Broken pipe", "Software termination"\
-			"Stopped", "Stopped", "Read attempted from control terminal", \
-			"Write attempted from control terminal"};
-	return (msg[sig]);
+	if (sig == SIGINT)
+		return(ft_error(NULL, "Interrupted", NULL));
+	else if (sig == SIGILL)
+		return(ft_error(NULL, "Illegal istruction", NULL));
+	else if (sig == SIGTRAP)
+		return(ft_error(NULL, "Trace trap", NULL));
+	else if (sig == SIGABRT)
+		return(ft_error(NULL, "Aborted", NULL));
+	else if (sig == SIGFPE)
+		return(ft_error(NULL, "Floating point exception", NULL));
+	else if (sig == SIGKILL)
+		return(ft_error(NULL, "Killed", NULL));
+	else if (sig == SIGBUS)
+		return(ft_error(NULL, "Bus error", NULL));
+	else if (sig == SIGSEGV)
+		return(ft_error(NULL, "Segmentation fault", NULL));
+	else if (sig == SIGSYS)
+		return(ft_error(NULL, "Non existent system call", NULL));
+	else if (sig == SIGPIPE)
+		return(ft_error(NULL, "Broken pipe", NULL));
+	else if (sig == SIGTERM)
+		return(ft_error(NULL, "Software termination", NULL));
+	else if (sig == SIGSTOP || sig == SIGTSTP)
+		return(ft_error(NULL, "Stopped", NULL));
+	else if (sig == SIGTTIN)
+		return(ft_error(NULL, "Read attempted from control terminal", NULL));
+	else if (sig == SIGTTOU)
+		return(ft_error(NULL, "Write attempted from control terminal", NULL));
+	return (0);
 }
 
 int			ft_handle_ret_signal(int status)
 {
 	int			sig;
 	int			i;
-	int			sig_n[] = {SIGINT, SIGILL, SIGTRAP, SIGABRT, SIGFPE, SIGKILL, \
-						SIGBUS, SIGSEGV, SIGSYS, SIGPIPE, SIGTERM, SIGSTOP, \
-						SIGTSTP, SIGTTIN, SIGTTOU};
 	char		*uknw_sig;
 
 	if (!WIFEXITED(status) && WIFSIGNALED(status))
@@ -39,9 +58,9 @@ int			ft_handle_ret_signal(int status)
 		i = -1;
 		while (++i <= 13)
 		{
-			if (sig == sig_n[i])
+			if (ft_sigcheck(sig))
 			{
-				return (ft_error(NULL, ft_sig_msg(i), NULL));
+				return (-1);
 			}
 		}
 		uknw_sig = ft_itoa(sig);
@@ -65,7 +84,7 @@ void	ft_sig_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		ft_putendl("\nQuitting...");
-		exit(-1);
+		ft_putchar('\n');
+		ft_putstr("$> ");
 	}
 }

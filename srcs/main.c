@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 17:15:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/30 19:05:03 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/30 22:22:58 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void		ft_banner(void)
 	ft_putendl("      \\__\\/   ");
 }
 
-static void		ft_prompt(t_env e)
+void			ft_prompt(t_env e)
 {
 	ft_putstr(e.prompt);
 	ft_putchar(' ');
@@ -63,6 +63,7 @@ int				main(int ac, char **av, char **env)
 		free(e.line);
 		e.line = NULL;
 	}
+	ft_putendl("exit");
 	ft_env_free(&e);
 	return (e.exit);
 }
