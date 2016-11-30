@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 18:55:15 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/29 19:08:33 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/30 19:19:21 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ int			ft_parse_line(t_env *e)
 			ft_free_tab(e->cmd);
 		}
 	}
+	ft_free_tab(cmds);
 	return (ret);
 }

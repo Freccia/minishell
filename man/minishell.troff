@@ -31,7 +31,8 @@ Option \fI-i\fR unsetenv all and setenv arguments.
 Sets enviroment variable "\fIname\fR" = "\fIvalue\fR".
 .TP 4
 .B unsetenv \fI[name|all]\fR
-Unsets enviroment variable "\fIname\fR"
+Unsets enviroment variable "\fIname\fR".
+"fIunsetenv all\fR" removes all entry in env.
 .TP 4
 .B echo \fIphrase\fR
 Write "\fIphrase\fR" to stdout. (redirection not supported... yet)
