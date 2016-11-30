@@ -95,7 +95,7 @@ SRC = ft_strlen.c\
 OBJ = $(SRC:.c=.o)
 
 $(NAME) :
-	@echo "\x1b[44;32m Making libft \x1b[0m"
+	@echo "\033[32;44m Making libft \033[0m"
 	@make $(OBJ)
 	@ar -rcs $(NAME) $(OBJ)
 	@ranlib $(NAME)
