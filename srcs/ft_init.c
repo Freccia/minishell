@@ -6,17 +6,15 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 19:22:14 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/30 19:05:34 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/01 13:22:48 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void		ft_set_prompt(t_env *e, int ac, char **av)
+static void		ft_set_prompt(t_env *e)
 {
-	(void)ac;
-	(void)av;
-	e->prompt = ft_strdup("$>");
+	e->prompt = ft_strdup("$> ");
 }
 
 static int		ft_set_home(t_env *e)
@@ -52,11 +50,13 @@ static void		ft_set_shlvl(t_env *e)
 
 void			ft_init(t_env *e, int ac, char **av, char **env)
 {
+	(void)ac;
+	(void)av;
 	e->x = 1;
 	e->exit = 0;
 	e->line = NULL;
 	e->env = ft_tabdup(env);
-	ft_set_prompt(e, ac, av);
+	ft_set_prompt(e);
 	ft_set_shlvl(e);
 	if (e->env == NULL || !ft_set_home(e))
 		ft_error("minishell", "warning: no home set", NULL);

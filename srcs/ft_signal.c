@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 17:31:41 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/30 22:24:06 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/01 13:20:03 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,6 @@ int			ft_handle_ret_signal(int status)
 	return (0);
 }
 
-void		ft_set_sig_handler(void)
-{
-	int		sig;
-
-	sig = 0;
-	while (++sig < 31)
-		signal(sig, ft_sig_handler);
-}
-
 void	ft_sig_handler(int sig)
 {
 	if (sig == SIGINT)
@@ -87,4 +78,13 @@ void	ft_sig_handler(int sig)
 		ft_putchar('\n');
 		ft_putstr("$> ");
 	}
+}
+
+void		ft_set_sig_handler(void)
+{
+	int		sig;
+
+	sig = 0;
+	while (++sig < 31)
+		signal(sig, ft_sig_handler);
 }
