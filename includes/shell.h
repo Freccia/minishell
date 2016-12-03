@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 13:10:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/29 20:09:14 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/01 13:39:34 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct		s_env
 	char			*line;
 	char			**cmd;
 	size_t			cmd_len;
-	int				cmd_exit_stat;
 }					t_env;
 
 int					ft_parse_line(t_env *e);
@@ -46,6 +45,7 @@ void				ft_init(t_env *e, int ac, char **av, char **env);
 /*
 **		Signals
 */
+int					ft_handle_ret_signal(int status);
 void				ft_set_sig_handler(void);
 void				ft_sig_handler(int sig);
 
@@ -67,6 +67,6 @@ int					ft_setenv(char ***env, char *name, char *value);
 int					ft_unsetenv_blt(t_env *e);
 int					ft_unsetenv(char ***env, char *name);
 int					ft_chdir(t_env *e);
-//int					ft_echo(t_env *e);
+int					ft_echo(t_env *e);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 17:24:45 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/29 19:29:27 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/01 13:29:54 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ static int		ft_arg_isdouble(char **args, char *arg, int i)
 	ft_free_tab(tmp);
 	while (args[++i])
 		if (ft_strnequ(args[i], eval, ft_strlen(eval)))
+		{
+			free(eval);
 			return (1);
+		}
+	free(eval);
 	return (0);
 }
 
@@ -98,8 +102,7 @@ int				ft_env(t_env *e)
 	{
 		if ((i = ft_env_opt(e, &env_cpy)) > 0)
 		{
-			if (e->cmd[i])
-				e->cmd_exit_stat = ft_exec(&e->cmd[i], env_cpy);
+			ft_exec(&e->cmd[i], env_cpy);
 		}
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 17:15:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/29 19:27:08 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/01 13:35:49 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ static void		ft_banner(void)
 	ft_putendl("      \\__\\/   ");
 }
 
-static void		ft_prompt(t_env e)
-{
-	ft_putstr(e.prompt);
-	ft_putchar(' ');
-}
-
 int				main(int ac, char **av, char **env)
 {
 	t_env	e;
@@ -53,7 +47,7 @@ int				main(int ac, char **av, char **env)
 	ft_set_sig_handler();
 	while (e.x)
 	{
-		ft_prompt(e);
+		ft_putstr(e.prompt);
 		if (get_next_line(0, &e.line) > 0)
 		{
 			ft_parse_line(&e);
@@ -63,6 +57,7 @@ int				main(int ac, char **av, char **env)
 		free(e.line);
 		e.line = NULL;
 	}
+	ft_putendl("exit");
 	ft_env_free(&e);
 	return (e.exit);
 }

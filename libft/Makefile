@@ -73,7 +73,7 @@ all :
 	@make $(NAME)
 
 $(NAME): 
-	@echo "\x1b[44m\x1b[32m Making libprintf \x1b[0m\x1b[0m"
+	@echo "\033[32;44m Making libprintf \033[0m"
 	@make $(OBJ_PRINTF)
 	@ar -rcs $(NAME) $(OBJ_LIBFT) $(OBJ_PRINTF)
 	@ranlib $(NAME)

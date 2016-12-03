@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:22:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/29 19:12:45 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/30 17:38:31 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,9 @@ static int		ft_fork_exec(char *exec, char **cmd, char **env)
 	{
 		execve(exec, &cmd[0], env);
 	}
-	waitpid(pid, &status, 0);
-	return (0);
+	waitpid(pid, &status, WUNTRACED);
+	ft_handle_ret_signal(status);
+	return (status);
 }
 
 int				ft_exec(char **cmd, char **env)

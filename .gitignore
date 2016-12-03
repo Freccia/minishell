@@ -36,3 +36,5 @@
 ._*
 .*nfs*
 minishell
+fpe
+segv
