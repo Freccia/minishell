@@ -6,19 +6,11 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 13:38:01 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/01 19:30:58 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/03 20:24:14 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-static int	ft_putoctal(char *str)
-{
-	int		oct;
-	
-	oct = ft_atoi(str);
-	return (ft_printf("%o", oct));
-}
 
 static int	ft_print_escape(char c)
 {
@@ -40,8 +32,6 @@ static int	ft_print_escape(char c)
 		ft_putchar('\t');
 	else if (c == 'v')
 		ft_putchar('\v');
-	else if (c == '0')
-		return (8);
 	else
 		return(-1);
 	return (0);
@@ -59,10 +49,6 @@ static int	ft_subs_escape(char *str)
 		{
 			if ((ret = ft_print_escape(str[i + 1])) == 1)
 				return (1);
-			else if (ret == 8)
-			{
-				 i += ft_putoctal(&str[i + 2]);
-			}
 			else if (ret == 0)
 				++i;
 		}
