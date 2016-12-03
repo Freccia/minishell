@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 17:31:41 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/30 22:24:06 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/03 16:46:47 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static int	ft_sigcheck(int sig)
 	else if (sig == SIGSTOP || sig == SIGTSTP)
 		return(ft_error(NULL, "Stopped", NULL));
 	else if (sig == SIGTTIN)
-		return(ft_error(NULL, "Read attempted from control terminal", NULL));
+		return(ft_error(NULL, "Background read attempted from control terminal", NULL));
 	else if (sig == SIGTTOU)
-		return(ft_error(NULL, "Write attempted from control terminal", NULL));
+		return(ft_error(NULL, "Background write attempted from control terminal", NULL));
 	return (0);
 }
 
@@ -77,7 +77,12 @@ void		ft_set_sig_handler(void)
 
 	sig = 0;
 	while (++sig < 31)
-		signal(sig, ft_sig_handler);
+	{
+		if (sig == SIGTSTP || sig == SIGCONT)
+			signal(sig, SIG_DFL);
+		else
+			signal(sig, ft_sig_handler);
+	}
 }
 
 void	ft_sig_handler(int sig)
