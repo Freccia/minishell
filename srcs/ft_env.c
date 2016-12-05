@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 17:24:45 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/01 13:29:54 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 21:34:16 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,12 @@ static int		ft_env_opt(t_env *e, char ***env_cpy)
 		}
 		else if (e->cmd[i][1] == 'i')
 			return (ft_opt_i(e, env_cpy, i));
+		else
+		{
+			ft_error("env", "illegal option --", &e->cmd[i][1]);
+			ft_error("usege", "env [-i name1=val1 ...] [-u name]", NULL);
+			return (0);
+		}
 	}
 	if (i == (int)e->cmd_len)
 	{

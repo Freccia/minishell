@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:22:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 21:13:35 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 21:32:05 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char			*ft_find_exec(char **paths, char *cmd)
 		return (NULL);
 	}
 	while (paths[++i])
-	{
 		if ((exec = ft_find_exec_readdir(paths[i], cmd)) != NULL)
 		{
 			tmp = ft_strjoin(paths[i], "/");
@@ -61,7 +60,6 @@ char			*ft_find_exec(char **paths, char *cmd)
 			free(exec);
 			break ;
 		}
-	}
 	return (path);
 }
 
