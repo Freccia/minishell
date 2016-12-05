@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:44:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 16:27:43 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 20:12:32 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_isalpha_str(char *str);
 int					ft_issticky(char *path);
+int					ft_isexec(char *path);
 
 /*
 **	STR

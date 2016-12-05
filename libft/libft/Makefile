@@ -32,6 +32,7 @@ SRC = ft_strlen.c\
 		ft_isnbr.c\
 		ft_isalpha_str.c\
 		ft_issticky.c\
+		ft_isexec.c\
 		ft_toupper.c\
 		ft_tolower.c\
 		ft_memset.c\

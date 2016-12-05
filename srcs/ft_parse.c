@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 18:55:15 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 17:30:31 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 20:29:38 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static int		ft_exec_builtin(t_env *e)
 		ft_chdir(e);
 	else if (ft_strequ(e->cmd[0], "echo") && ++ret)
 		ft_echo(e);
+	else if (ft_strequ(e->cmd[0], "where") && ++ret)
+		ft_where(e);
 	return (ret);
 }
 
