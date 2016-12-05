@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 20:09:52 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 21:08:20 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 21:14:52 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@ int			ft_isexec(char *path)
 {
 	struct stat	buf;
 
-	if (path[0] == '.' && path[1] == '\0')
-		return (0);
-	if (path[0] == '.' &&  path[1] == '.' && path[2] == '\0')
-		return (0);
 	lstat(path, &buf);
 	if (S_ISREG(buf.st_mode) && (S_IXUSR & buf.st_mode))
 		return (1);
