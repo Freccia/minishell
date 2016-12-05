@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:22:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 20:37:39 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 21:13:35 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ char			*ft_find_exec(char **paths, char *cmd)
 	i = -1;
 	exec = NULL;
 	path = NULL;
+	if ((cmd[0] == '.' || cmd[0] == '/'))
+	{
+		if (ft_isexec(cmd))
+			return (ft_strdup(cmd));
+		return (NULL);
+	}
 	while (paths[++i])
 	{
 		if ((exec = ft_find_exec_readdir(paths[i], cmd)) != NULL)
@@ -104,10 +110,7 @@ int				ft_exec(char **cmd, char **env)
 	status = 0;
 	exec = NULL;
 	paths = ft_find_paths(env);
-	if ((cmd[0][0] == '.' || cmd[0][0] == '/') && ft_isexec(cmd[0]))
-		exec = ft_strdup(cmd[0]);
-	else
-		exec = ft_find_exec(paths, cmd[0]);
+	exec = ft_find_exec(paths, cmd[0]);
 	if (exec == NULL || access(exec, F_OK))
 	{
 		ft_free_tab(paths);
