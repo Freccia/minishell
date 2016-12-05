@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 18:55:15 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/01 13:39:50 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 16:29:09 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static char		**ft_parse_cmd(t_env *e)
 
 	trline = ft_strxtrim(e->line, '\t');
 	cmds = ft_strsplit(trline, ';');
-	//	ft_subspecials(&e->cmd);
 	free(trline);
 	return (cmds);
 }
@@ -56,16 +55,21 @@ int			ft_parse_line(t_env *e)
 	{
 		while (cmds[++i])
 		{
-			e->cmd = ft_strsplit(cmds[i], ' ');
-			e->cmd_len = ft_tablen(e->cmd);
-			if (e->cmd_len)
+			if (ft_matchquotes(cmds[i]) == 0)
 			{
-				if ((ret = ft_exec_builtin(e)))
-					;
-				else
-					ret = ft_exec(e->cmd, e->env);
+				e->cmd = ft_strsplit_quote(cmds[i], ' ');
+				e->cmd_len = ft_tablen(e->cmd);
+				if (e->cmd_len)
+				{
+					if ((ret = ft_exec_builtin(e)))
+						;
+					else
+						ret = ft_exec(e->cmd, e->env);
+				}
+				ft_free_tab(e->cmd);
 			}
-			ft_free_tab(e->cmd);
+			else
+				ft_error(NULL, "Unmatched quote", NULL); 
 		}
 	}
 	ft_free_tab(cmds);
