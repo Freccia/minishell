@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 13:15:17 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 16:29:33 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 17:25:31 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static int		ft_count_words(char const *s, char c)
 		}
 		else if (quote == '\0' && (s[i] == '\'' || s[i] == '\"'))
 			quote = s[i];
-		if (quote == '\0' && \
-				((i > 0 && s[i] != c && s[i - 1] == c) || (i == 0 && s[i] != c)))
-				++count;
+		if (quote == '\0' && ((i > 0 && s[i] != c && s[i - 1] == c) || \
+					(i == 0 && s[i] != c)))
+			++count;
 		++i;
 	}
 	return (count);

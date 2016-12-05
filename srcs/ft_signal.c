@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 17:31:41 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 13:55:28 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 17:34:10 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,29 @@
 static int	ft_sigcheck(int sig)
 {
 	if (sig == SIGINT)
-		return(ft_error(NULL, "Interrupted", NULL));
+		return (ft_error(NULL, "Interrupted", NULL));
 	else if (sig == SIGILL)
-		return(ft_error(NULL, "Illegal istruction", NULL));
+		return (ft_error(NULL, "Illegal istruction", NULL));
 	else if (sig == SIGTRAP)
-		return(ft_error(NULL, "Trace trap", NULL));
+		return (ft_error(NULL, "Trace trap", NULL));
 	else if (sig == SIGABRT)
-		return(ft_error(NULL, "Aborted", NULL));
+		return (ft_error(NULL, "Aborted", NULL));
 	else if (sig == SIGFPE)
-		return(ft_error(NULL, "Floating point exception", NULL));
+		return (ft_error(NULL, "Floating point exception", NULL));
 	else if (sig == SIGKILL)
-		return(ft_error(NULL, "Killed", NULL));
+		return (ft_error(NULL, "Killed", NULL));
 	else if (sig == SIGBUS)
-		return(ft_error(NULL, "Bus error", NULL));
+		return (ft_error(NULL, "Bus error", NULL));
 	else if (sig == SIGSEGV)
-		return(ft_error(NULL, "Segmentation fault", NULL));
+		return (ft_error(NULL, "Segmentation fault", NULL));
 	else if (sig == SIGSYS)
-		return(ft_error(NULL, "Non existent system call", NULL));
+		return (ft_error(NULL, "Non existent system call", NULL));
 	else if (sig == SIGPIPE)
-		return(ft_error(NULL, "Broken pipe", NULL));
+		return (ft_error(NULL, "Broken pipe", NULL));
 	else if (sig == SIGTERM)
-		return(ft_error(NULL, "Software termination", NULL));
+		return (ft_error(NULL, "Software termination", NULL));
 	else if (sig == SIGSTOP || sig == SIGTSTP)
-		return(ft_error(NULL, "Stopped", NULL));
-	else if (sig == SIGTTIN)
-		return(ft_error(NULL, "Background read attempted from control terminal", NULL));
-	else if (sig == SIGTTOU)
-		return(ft_error(NULL, "Background write attempted from control terminal", NULL));
+		return (ft_error(NULL, "Stopped", NULL));
 	return (0);
 }
 
@@ -85,7 +81,7 @@ void		ft_set_sig_handler(void)
 	}
 }
 
-void	ft_sig_handler(int sig)
+void		ft_sig_handler(int sig)
 {
 	if (sig == SIGINT)
 	{

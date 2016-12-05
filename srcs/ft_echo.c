@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 13:38:01 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 14:10:03 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 17:25:57 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_print_escape(char c)
 	else if (c == 'v')
 		ft_putchar('\v');
 	else
-		return(-1);
+		return (-1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 18:34:51 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/21 10:49:12 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 17:24:30 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char		*imaxtoa_base_return(long long value, int base, char set)
 {
 	int			size;
 	char		*num;
-	long long		uvalue;
+	long long	uvalue;
 
 	size = get_size(value, base);
 	uvalue = value;

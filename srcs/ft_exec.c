@@ -6,29 +6,37 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:22:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/30 17:38:31 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 17:50:10 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static char		*ft_find_exec_readdir(DIR *dir, char *cmd)
+static char		*ft_find_exec_readdir(char *paths, char *cmd)
 {
+	DIR				*dir;
 	struct dirent	*dirent;
+	char			*exec;
 
-	while ((dirent = readdir(dir)) != NULL)
+	exec = NULL;
+	if ((dir = opendir(paths)) != NULL)
 	{
-		if (ft_strequ(dirent->d_name, cmd))
+		while ((dirent = readdir(dir)) != NULL)
 		{
-			return (ft_strdup(dirent->d_name));
+			if (ft_strequ(dirent->d_name, cmd))
+			{
+				exec = ft_strdup(dirent->d_name);
+				break ;
+			}
 		}
+		if (closedir(dir))
+			ft_error("closedir", "failed closing dir", paths);
 	}
-	return (NULL);
+	return (exec);
 }
 
 static char		*ft_find_exec(char **paths, char *cmd)
 {
-	DIR				*dir;
 	char			*exec;
 	char			*path;
 	char			*tmp;
@@ -39,22 +47,16 @@ static char		*ft_find_exec(char **paths, char *cmd)
 	path = NULL;
 	while (paths[++i])
 	{
-		if ((dir = opendir(paths[i])) != NULL)
+		if ((exec = ft_find_exec_readdir(paths[i], cmd)) != NULL)
 		{
-			exec = ft_find_exec_readdir(dir, cmd);
-			if (closedir(dir))
-				ft_error("closedir", "failed closing dir", paths[i]);
-			if (exec != NULL)
-			{
-				tmp = ft_strjoin(paths[i], "/");
-				path = ft_strjoin(tmp, exec);
-				free(tmp);
-				free(exec);
-				return (path);
-			}
+			tmp = ft_strjoin(paths[i], "/");
+			path = ft_strjoin(tmp, exec);
+			free(tmp);
+			free(exec);
+			break ;
 		}
 	}
-	return (NULL);
+	return (path);
 }
 
 static char		**ft_find_paths(char **env)
@@ -112,9 +114,7 @@ int				ft_exec(char **cmd, char **env)
 		return (ft_error(cmd[0], "command not found", NULL));
 	}
 	if (access(exec, X_OK) == 0 || ft_issticky(exec))
-	{
 		status = ft_fork_exec(exec, cmd, env);
-	}
 	else
 		ft_error(exec, "permission denied", NULL);
 	ft_free_tab(paths);

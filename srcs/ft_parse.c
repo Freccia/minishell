@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 18:55:15 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 16:29:09 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 17:30:31 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,25 @@ static int		ft_exec_builtin(t_env *e)
 	return (ret);
 }
 
-int			ft_parse_line(t_env *e)
+int				ft_exec_cmd(t_env *e, char **cmds, int i)
+{
+	int		ret;
+
+	ret = 0;
+	e->cmd = ft_strsplit_quote(cmds[i], ' ');
+	e->cmd_len = ft_tablen(e->cmd);
+	if (e->cmd_len)
+	{
+		if ((ret = ft_exec_builtin(e)))
+			;
+		else
+			ret = ft_exec(e->cmd, e->env);
+	}
+	ft_free_tab(e->cmd);
+	return (ret);
+}
+
+int				ft_parse_line(t_env *e)
 {
 	int		i;
 	int		ret;
@@ -57,19 +75,10 @@ int			ft_parse_line(t_env *e)
 		{
 			if (ft_matchquotes(cmds[i]) == 0)
 			{
-				e->cmd = ft_strsplit_quote(cmds[i], ' ');
-				e->cmd_len = ft_tablen(e->cmd);
-				if (e->cmd_len)
-				{
-					if ((ret = ft_exec_builtin(e)))
-						;
-					else
-						ret = ft_exec(e->cmd, e->env);
-				}
-				ft_free_tab(e->cmd);
+				ret = ft_exec_cmd(e, cmds, i);
 			}
 			else
-				ft_error(NULL, "Unmatched quote", NULL); 
+				ft_error(NULL, "Unmatched quote", NULL);
 		}
 	}
 	ft_free_tab(cmds);
