@@ -6,20 +6,26 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 17:33:14 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/30 19:49:17 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 18:49:39 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 #include <unistd.h>
+#include <sys/stat.h>
 
 static int	ft_chdir_error(char *path)
 {
+	struct stat	buf;
+
 	if (access(path, F_OK) == -1)
 		return (ft_error(path, "No such file or directory", NULL));
-	else if (access(path, X_OK) == -1)
-		return (ft_error(path, "permission denied: ", NULL));
-	return (ft_error("cd", "unknown error: ", path));
+	lstat(path, &buf);
+	if (!S_ISDIR(buf.st_mode))
+		return (ft_error(path, "Not a directory", NULL));
+	if (access(path, X_OK | R_OK) == -1)
+		return (ft_error(path, "Permission denied", NULL));
+	return (ft_error("cd", "Unknown error: ", path));
 }
 
 static int	ft_chdir_env(t_env *e, char *dir)
@@ -31,7 +37,10 @@ static int	ft_chdir_env(t_env *e, char *dir)
 	oldpwd = NULL;
 	oldpwd = getcwd(oldpwd, 0);
 	if (chdir(dir) == -1)
+	{
+		free(oldpwd);
 		return (ft_chdir_error(dir));
+	}
 	pwd = getcwd(pwd, 0);
 	ft_unsetenv(&e->env, "OLDPWD");
 	ft_setenv(&e->env, "OLDPWD", oldpwd);

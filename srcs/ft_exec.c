@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:22:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 17:50:10 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 18:49:02 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,15 +108,15 @@ int				ft_exec(char **cmd, char **env)
 		exec = ft_strdup(cmd[0]);
 	else
 		exec = ft_find_exec(paths, cmd[0]);
-	if (exec == NULL)
+	if (exec == NULL || access(exec, F_OK))
 	{
 		ft_free_tab(paths);
-		return (ft_error(cmd[0], "command not found", NULL));
+		return (ft_error(cmd[0], "Command not found", NULL));
 	}
-	if (access(exec, X_OK) == 0 || ft_issticky(exec))
+	if (access(exec, X_OK | R_OK) == 0 || ft_issticky(exec))
 		status = ft_fork_exec(exec, cmd, env);
 	else
-		ft_error(exec, "permission denied", NULL);
+		ft_error(exec, "Permission denied", NULL);
 	ft_free_tab(paths);
 	free(exec);
 	return (status);

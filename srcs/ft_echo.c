@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 13:38:01 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 17:59:59 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/05 18:17:01 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			ft_echo(t_env *e)
 		++i;
 	while (e->cmd[++i])
 	{
-		if ((!nl && i == 1) || (i > 2 && i < (int)e->cmd_len))
+		if ((!nl && i == 2) || (i > 2 && i < (int)e->cmd_len))
 			ft_putchar(' ');
 		ft_putstr(e->cmd[i]);
 	}
