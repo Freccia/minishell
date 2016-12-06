@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 18:58:17 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 20:39:09 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/07 00:08:53 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ int			ft_where(t_env *e)
 			free(path);
 		}
 	}
-	free(paths);
+	ft_free_tab(paths);
 	return (0);
 }

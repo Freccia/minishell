@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 20:03:34 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/06 15:39:00 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/07 00:05:01 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void		ft_env_free(t_env *e)
 {
 	if (e->line)
 		free(e->line);
+	if (e->home)
+		free(e->home);
 	free(e->prompt);
 	ft_free_tab(e->env);
 }
