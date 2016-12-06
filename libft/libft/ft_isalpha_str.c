@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 18:34:23 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/25 18:35:20 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/06 15:27:44 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			ft_isalpha_str(char *str)
 {
 	while (*str)
 	{
-		if (!ft_isalpha(*str))
+		if (!ft_isalpha(*str) && *str != '_' && *str != '-')
 			return (0);
 		++str;
 	}
