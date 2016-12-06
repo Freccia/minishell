@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 19:22:14 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/01 13:22:48 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/06 13:26:37 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void		ft_set_shlvl(t_env *e)
 		ft_setenv(&e->env, "SHLVL", lvl);
 		free(lvl);
 	}
+	else
+		ft_setenv(&e->env, "SHLVL", "1");
 }
 
 void			ft_init(t_env *e, int ac, char **av, char **env)
