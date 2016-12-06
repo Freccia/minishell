@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 18:55:15 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 20:29:38 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/06 15:57:04 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char		**ft_parse_cmd(t_env *e)
 	char	**cmds;
 	char	*trline;
 
-	trline = ft_strxtrim(e->line, '\t');
+	trline = ft_strxtrim_quote(e->line, '\t');
 	cmds = ft_strsplit(trline, ';');
 	free(trline);
 	return (cmds);
