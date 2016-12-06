@@ -1,21 +1,22 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strxtrim_quote.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfabbro <lfabbro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/06 15:57:31 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/06 16:11:44 by lfabbro          ###   ########.fr       */
+/*   Created: 2016/12/06 17:32:04 by lfabbro           #+#    #+#             */
+/*   Updated: 2016/12/06 17:33:21 by lfabbro          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- **	DESCRIPTION:
- **		Trim str from chars x (avoiding quotes) and return the new NULL terminated trimmed string.
- */
+**	DESCRIPTION:
+**		Trim str from chars x (avoiding quotes) and return the new
+**		NULL terminated trimmed string.
+*/
 
 static char		ft_quote(char quote, char c)
 {

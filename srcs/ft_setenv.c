@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 16:16:46 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/06 15:52:07 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/06 17:31:24 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				ft_setenv(char ***env, char *name, char *value)
 			{
 				free(nameequ);
 				free(tmp[i]);
-					tmp[i] = entry;
+				tmp[i] = entry;
 				return (0);
 			}
 		}
