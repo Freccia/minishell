@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 17:05:01 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/11/29 19:30:59 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/06 16:55:42 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int			ft_unsetenv(char ***env, char *name)
 		{
 			if (ft_strnequ(ptr[pos], nameequ, ft_strlen(nameequ)))
 			{
-				tmp = ft_tabpop(*env, pos);
+				tmp = ft_tabpop(ptr, pos);
 				ft_free_tab(*env);
 				*env = tmp;
 				free(nameequ);
