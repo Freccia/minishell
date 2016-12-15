@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 17:15:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/06 13:27:07 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/15 19:27:34 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int				main(int ac, char **av, char **env)
 		{
 			ft_parse_line(&e);
 		}
-		if (e.line == NULL)
+		else if (e.line == NULL)
 			break ;
 		free(e.line);
 		e.line = NULL;
