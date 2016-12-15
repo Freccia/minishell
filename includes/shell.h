@@ -6,16 +6,27 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 13:10:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/05 20:33:18 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/15 21:01:25 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHELL_H
 # define SHELL_H
 
+/*
+**	<unistd.h> :		[ chdir | access ]
+**		(ft_chdir)
+**	<sys/stat.h> :		[ lstat ]
+**		(ft_chdir)
+**	<dirent.h> :		[ opendir | readdir ]
+**		(ft_exec)
+**	<signal.h> :		[ signal ]
+**		(ft_signal)
+*/
+
 # include <unistd.h>
-# include <dirent.h>
 # include <sys/wait.h>
+# include <dirent.h>
 # include <signal.h>
 # include "libft.h"
 
