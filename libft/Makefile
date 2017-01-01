@@ -12,89 +12,92 @@
 
 NAME = libft.a
 
-SRC_NAME = ft_printf.c ft_pf_lenght.c ft_pf_parse.c ft_pf_set.c\
-		   ft_pf_padding.c ft_pf_conversions.c ft_pf_handle_wchar.c\
-		   ft_pf_formats_00.c ft_pf_formats_01.c ft_pf_a_char.c ft_pf_a_hex.c\
-		   ft_pf_a_int.c ft_pf_a_octal.c ft_pf_a_ptr.c ft_pf_a_str.c\
-		   ft_pf_a_uint.c ft_pf_a_wstr.c ft_pf_a_wchar.c
+## SOURCES ##
+PRINTF = ft_printf.c ftpf_lenght.c ftpf_parse.c ftpf_set.c\
+		   ftpf_padding.c ftpf_conversions.c ftpf_handle_wchar.c\
+		   ftpf_formats_00.c ftpf_formats_01.c ftpf_char.c ftpf_hex.c\
+		   ftpf_int.c ftpf_octal.c ftpf_ptr.c ftpf_str.c\
+		   ftpf_uint.c ftpf_wstr.c ftpf_wchar.c
 
-OBJ_NAME = $(SRC_NAME:.c=.o)
+OBJ_PRINTF = $(PRINTF:.c=.o)
 
-OBJ_LIB_NAME = ft_strlen.o ft_strstr.o ft_strcpy.o ft_strdup.o ft_strndup.o\
-			   ft_strcat.o ft_strcmp.o ft_strncpy.o ft_strncat.o ft_strlcat.o\
-			   ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o\
-			   ft_itoa_base.o ft_imaxtoa_base.o ft_uimaxtoa_base.o ft_itoa.o\
-			   ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o\
-			   ft_issticky.o ft_isalpha_str.o ft_isexec.o\
-			   ft_toupper.o ft_tolower.o\
-			   ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o\
-			   ft_memmove.o ft_memchr.o ft_memcmp.o ft_memdel.o ft_strnew.o\
-			   ft_strdel.o ft_strclr.o ft_striter.o ft_striteri.o ft_strmap.o\
-			   ft_strmapi.o ft_strequ.o ft_strnequ.o ft_strsub.o ft_strjoin.o\
-			   ft_strtrim.o ft_strxtrim.o ft_strsplit.o\
-			   ft_strsplit_quote.o ft_strxtrim_quote.o\
-			   ft_free_tab.o ft_tablen.o ft_tabnew.o ft_tabdup.o ft_tabndup.o\
-			   ft_tabcpy.o ft_tabcat.o ft_tabpop.o\
-			   ft_putchar.o ft_putstr.o ft_putendl.o ft_putnbr.o ft_puttab.o\
-			   ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o\
-			   ft_memalloc.o\
-			   ft_lstnew.o ft_lstdelone.o ft_lstdel.o ft_lstadd.o ft_lstiter.o\
-			   ft_lstmap.o ft_wstrlen.o ft_abs.o ft_swap.o\
-			   ft_realloc.o ft_getnbr.o ft_wchar_size.o\
-			   ft_nbrlen.o ft_getchar.o ft_getchar.o\
-			   ft_atol.o ft_atoll.o ft_isnbr.o\
-			   get_next_line.o
+LIBFT = ft_strlen.c ft_strstr.c ft_strcpy.c ft_strdup.c ft_strndup.c\
+			   ft_strcat.c ft_strcmp.c ft_strncpy.c ft_strncat.c ft_strlcat.c\
+			   ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c\
+			   ft_itoa_base.c ft_imaxtoa_base.c ft_uimaxtoa_base.c ft_itoa.c\
+			   ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
+			   ft_issticky.c ft_isalpha_str.c ft_isexec.c\
+			   ft_toupper.c ft_tolower.c\
+			   ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c\
+			   ft_memmove.c ft_memchr.c ft_memcmp.c ft_memdel.c ft_strnew.c\
+			   ft_strdel.c ft_strclr.c ft_striter.c ft_striteri.c ft_strmap.c\
+			   ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c\
+			   ft_strtrim.c ft_strxtrim.c ft_strsplit.c\
+			   ft_strsplit_quote.c ft_strxtrim_quote.c\
+			   ft_free_tab.c ft_tablen.c ft_tabnew.c ft_tabdup.c ft_tabndup.c\
+			   ft_tabcpy.c ft_tabcat.c ft_tabpop.c\
+			   ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_puttab.c\
+			   ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c\
+			   ft_memalloc.c\
+			   ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c\
+			   ft_lstmap.c ft_wstrlen.c ft_abs.c ft_swap.c\
+			   ft_realloc.c ft_getnbr.c ft_wchar_size.c\
+			   ft_nbrlen.c ft_getchar.c\
+			   ft_atol.c ft_atoll.c ft_isnbr.c\
+			   get_next_line.c
 
-LIB_NAME = ft
-SRC_PATH = ./srcs/
+OBJ_LIBFT = $(LIBFT:.c=.o)
+
+## PATHS ##
+SRC_PRINTF_PATH = ./ft_printf/
+SRC_LIBFT_PATH = ./libft/
 OBJ_PATH = ./objs/
 INC_PATH = ./includes ./libft
-LIB_PATH = ./libft/
 
 CC = @gcc
 CFLAGS = -Wall -Wextra -Werror
 
-
-## SOURCES ##
-OBJ_PRINTF = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
-OBJ_LIBFT = $(addprefix $(LIB_PATH),$(OBJ_LIB_NAME))
+## OBJECTS ##
+OBJS_PRINTF = $(addprefix $(OBJ_PATH),$(OBJ_PRINTF))
+OBJS_LIBFT = $(addprefix $(OBJ_PATH),$(OBJ_LIBFT))
 
 ## INCLUDES ##
 INC = $(addprefix -I,$(INC_PATH))
 
-## LIBRARIES ##
-LIB_LINK = $(addprefix -L,$(LIB_PATH))
-LIB = $(addprefix -l,$(LIB_NAME))
+## COLORS ##
+RED = "\033[31;44m"
+BLUE = "\033[32;44m"
+ENDC = "\033[0m"
 
 .PHONY: makelibft clean fclean re norme
 
 ## RULES ##
 all :
-	@make -C $(LIB_PATH)
 	@make $(NAME)
 
 $(NAME): 
-	@echo "\033[32;44m Making libprintf \033[0m"
-	@make $(OBJ_PRINTF)
-	@ar -rcs $(NAME) $(OBJ_LIBFT) $(OBJ_PRINTF)
+	@echo $(BLUE) "Making libft" $(ENDC)
+	@make $(OBJS_PRINTF)
+	@make $(OBJS_LIBFT)
+	@ar -rcs $(NAME) $(OBJS_PRINTF) $(OBJS_LIBFT)
 	@ranlib $(NAME)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+$(OBJ_PATH)%.o: $(SRC_PRINTF_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
 	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
-clean : libclean
-	@/bin/rm -f $(OBJ_PRINTF)
+$(OBJ_PATH)%.o: $(SRC_LIBFT_PATH)%.c
+	@mkdir -p $(OBJ_PATH)
+	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+
+clean :
+	@echo $(RED) "Removing libft objs" $(ENDC)
+	@/bin/rm -f $(OBJS_PRINTF)
+	@/bin/rm -f $(OBJS_LIBFT)
 	@/bin/rm -rf $(OBJ_PATH)
 
-fclean : libfclean clean
+fclean : clean
 	@/bin/rm -f $(NAME)
-
-libclean :
-	@make -C $(LIB_PATH) clean
-
-libfclean :
-	@make -C $(LIB_PATH) fclean
 
 re : fclean all
 

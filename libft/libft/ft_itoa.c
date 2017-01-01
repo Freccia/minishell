@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 /*
@@ -47,7 +48,7 @@ static char		*ft_itoa_nbc(unsigned int nb, int nb_len, int sign)
 {
 	char			*nbc;
 
-	if ((nbc = (char *)malloc(sizeof(*nbc) * nb_len)) == NULL)
+	if ((nbc = ft_strnew(nb_len)) == NULL)
 		return (NULL);
 	nbc += (nb_len);
 	*nbc = '\0';
@@ -65,7 +66,7 @@ static char		*ft_itoa_zero(void)
 {
 	char			*nbc;
 
-	if ((nbc = (char *)malloc(sizeof(*nbc) * 2)) == NULL)
+	if ((nbc = ft_strnew(2)) == NULL)
 		return (NULL);
 	nbc[0] = '0';
 	nbc[1] = '\0';

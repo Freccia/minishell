@@ -33,7 +33,7 @@ static char		*return_zero(void)
 {
 	char		*num;
 
-	if ((num = (char *)malloc(sizeof(char) * 2)) == NULL)
+	if ((num = ft_strnew(2)) == NULL)
 		return (NULL);
 	num[0] = '0';
 	num[1] = '\0';
@@ -48,7 +48,7 @@ static char		*imaxtoa_base_return(long long value, int base, char set)
 
 	size = get_size(value, base);
 	uvalue = value;
-	if ((num = (char*)malloc(sizeof(char) * size)) == NULL)
+	if ((num = ft_strnew(size)) == NULL)
 		return (NULL);
 	num[size] = '\0';
 	if (value < 0)

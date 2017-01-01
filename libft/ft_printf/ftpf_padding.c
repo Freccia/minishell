@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   padding.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/03 16:36:57 by lfabbro           #+#    #+#             */
-/*   Updated: 2015/12/03 16:40:14 by lfabbro          ###   ########.fr       */
+/*   Created: 2016/03/23 18:50:45 by lfabbro           #+#    #+#             */
+/*   Updated: 2016/09/15 18:26:45 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strndup(const char *src, size_t n)
+void		padding_left(t_struct *st, int limit)
 {
-	size_t	i;
-	size_t	slen;
-	char	*dup;
+	if (!(st->flags.pad & PAD_RIGHT))
+		while (st->flags.width >= 0 && st->flags.width-- > limit)
+			st->pc += ft_putchar(st->flags.padchar);
+}
 
-	i = -1;
-	slen = ft_strlen(src);
-	if ((dup = ft_strnew(n)) == NULL)
-		return (NULL);
-	while (++i < n && i < slen)
-		dup[i] = src[i];
-	dup[i] = '\0';
-	return (dup);
+void		padding_right(t_struct *st, int limit)
+{
+	if (st->flags.pad & PAD_RIGHT)
+		while (st->flags.width >= 0 && st->flags.width-- > limit)
+			st->pc += ft_putchar(st->flags.padchar);
 }

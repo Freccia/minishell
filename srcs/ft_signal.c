@@ -74,7 +74,7 @@ void		ft_set_sig_handler(void)
 	sig = 0;
 	while (++sig < 31)
 	{
-		if (sig == SIGTSTP || sig == SIGCONT || sig == SIGSEGV || \
+		if (sig == SIGSTOP || sig == SIGCONT || sig == SIGSEGV || \
 			sig == SIGKILL || sig == SIGBUS || sig == SIGFPE || sig == SIGTSTP)
 			signal(sig, SIG_DFL);
 		else

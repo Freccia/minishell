@@ -11,19 +11,17 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 char		**ft_tabnew(size_t size)
 {
 	char	**new;
 	size_t	i;
 
-	i = 0;
-	if (size == 0 || (new = malloc(sizeof(new) * size + 1)) == NULL)
+	i = -1;
+	if (size == 0 || (new = malloc(sizeof(new) * (size + 1))) == NULL)
 		return (NULL);
-	while (i <= size)
-	{
+	while (++i <= size)
 		new[i] = NULL;
-		++i;
-	}
 	return (new);
 }

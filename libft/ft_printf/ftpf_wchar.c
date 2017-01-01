@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   a_wchar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/03 16:36:57 by lfabbro           #+#    #+#             */
-/*   Updated: 2015/12/03 16:40:14 by lfabbro          ###   ########.fr       */
+/*   Created: 2016/03/25 11:26:29 by lfabbro           #+#    #+#             */
+/*   Updated: 2016/09/15 18:26:22 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strndup(const char *src, size_t n)
+int				a_wchar(t_struct *st)
 {
-	size_t	i;
-	size_t	slen;
-	char	*dup;
+	int			ret;
 
-	i = -1;
-	slen = ft_strlen(src);
-	if ((dup = ft_strnew(n)) == NULL)
-		return (NULL);
-	while (++i < n && i < slen)
-		dup[i] = src[i];
-	dup[i] = '\0';
-	return (dup);
+	ret = 0;
+	st->stargs.wchar = (wchar_t)va_arg(st->args, wchar_t);
+	st->flags.padchar = (st->flags.zero) ? '0' : ' ';
+	padding_left(st, 1);
+	if ((ret = handle_wchar(st->stargs.wchar)) < 0)
+		return ((st->pc = -1));
+	st->pc += ret;
+	padding_right(st, 1);
+	return (0);
 }

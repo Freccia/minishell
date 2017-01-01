@@ -1,34 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_xword.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 15:57:06 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/21 22:31:28 by lfabbro          ###   ########.fr       */
+/*   Created: 2016/08/21 13:22:06 by lfabbro           #+#    #+#             */
+/*   Updated: 2016/11/17 22:23:00 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-/*
-** DESCRIPTION:
-**     Allocates (with malloc(3)) and returns a “fresh” string ending
-**     with ’\0’. Each character of the string is initialized at
-**     ’\0’. If the allocation fails the function returns NULL.
-*/
-
-char	*ft_strnew(size_t size)
+static int		ft_xword_locate(int x, char *str, char div)
 {
-	char	*new;
-	size_t	i;
+	int			n;
+	int			i;
+
+	n = 1;
+	i = -1;
+	while (str[++i] && n < x)
+		if (str[i] == div)
+			++n;
+	if (n != x)
+		return (-1);
+	return (i);
+}
+
+char			*ft_xword(char *str, int x, char div)
+{
+	int			i;
+	int			j;
+	char		*word;
 
 	i = -1;
-	if (size == 0 || (new = malloc(sizeof(char) * (size + 1))) == NULL)
+	word = NULL;
+	if ((i = ft_xword_locate(x, str, div)) < 0)
 		return (NULL);
-	while (++i < size)
-		new[i] = '\0';
-	return (new);
+	j = i;
+	while (str[j] && str[j] != div)
+		++j;
+	word = ft_strndup(&str[i], ft_abs(j - i));
+	return (word);
 }
