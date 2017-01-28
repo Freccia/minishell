@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 19:22:14 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/06 13:26:37 by lfabbro          ###   ########.fr       */
+/*   Updated: 2017/01/28 15:13:27 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void			ft_init(t_env *e, int ac, char **av, char **env)
 	e->x = 1;
 	e->exit = 0;
 	e->line = NULL;
+	e->cmd = NULL;
 	e->env = ft_tabdup(env);
 	ft_set_prompt(e);
 	ft_set_shlvl(e);
