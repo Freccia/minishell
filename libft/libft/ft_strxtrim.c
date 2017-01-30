@@ -46,7 +46,7 @@ char			*ft_strxtrim(char const *str, char x)
 	if (str)
 	{
 		len = ft_trim_len(str, x);
-		if ((trim = ft_strnew(len)) == NULL)
+		if ((trim = malloc(sizeof(*trim) * len)) == NULL)
 			return (NULL);
 		while (str[i])
 		{

@@ -57,7 +57,7 @@ char			*ft_strxtrim_quote_ret(char const *str, char x, int len)
 	j = 0;
 	trim = NULL;
 	quote = '\0';
-	if ((trim = ft_strnew(len)) == NULL)
+	if ((trim = malloc(sizeof(*trim) * len)) == NULL)
 		return (NULL);
 	while (str[i])
 	{

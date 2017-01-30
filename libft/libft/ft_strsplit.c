@@ -20,16 +20,13 @@ size_t		ft_nwords(char const *str, char div)
 
 	i = 0;
 	nwds = 0;
-	if (str)
+	while (str[i] != '\0')
 	{
-		while (str[i] != '\0')
-		{
-			if (i > 0 && str[i] == div && str[i - 1] != div)
-				++nwds;
-			else if (i == 0 && str[i] != div)
-				++nwds;
-			++i;
-		}
+		if (i > 0 && str[i] == div && str[i - 1] != div)
+			++nwds;
+		else if (i == 0 && str[i] != div)
+			++nwds;
+		++i;
 	}
 	return (nwds);
 }
@@ -55,7 +52,7 @@ char		**ft_strsplit(char const *str, char div)
 	i = 0;
 	j = 0;
 	nwords = ft_nwords(str, div);
-	if (nwords == 0 || (tab = ft_tabnew(nwords)) == NULL)
+	if ((tab = ft_tabnew(nwords)) == NULL)
 		return (NULL);
 	while (i < (int)ft_strlen(str))
 	{
