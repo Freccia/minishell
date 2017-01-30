@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 18:05:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/28 10:38:20 by lfabbro          ###   ########.fr       */
+/*   Updated: 2017/01/30 15:18:18 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char		*ft_itoa_nbc(unsigned int nb, int nb_len, int sign)
 {
 	char			*nbc;
 
-	if ((nbc = (char *)malloc(sizeof(*nbc) * nb_len)) == NULL)
+	if ((nbc = (char *)malloc(sizeof(*nbc) * nb_len + 1)) == NULL)
 		return (NULL);
 	nbc += (nb_len);
 	*nbc = '\0';

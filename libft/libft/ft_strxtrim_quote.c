@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 17:32:04 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/06 17:33:21 by lfabbro          ###   ########.fr       */
+/*   Updated: 2017/01/30 15:22:57 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char			*ft_strxtrim_quote_ret(char const *str, char x, int len)
 	j = 0;
 	trim = NULL;
 	quote = '\0';
-	if ((trim = malloc(sizeof(*trim) * len)) == NULL)
+	if ((trim = malloc(sizeof(*trim) * len + 1)) == NULL)
 		return (NULL);
 	while (str[i])
 	{

@@ -38,4 +38,5 @@
 minishell
 fpe
 segv
+log
 ft_atoi_base.c

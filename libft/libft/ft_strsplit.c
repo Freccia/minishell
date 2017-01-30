@@ -6,7 +6,7 @@
 /*   By: lfabbro <lfabbro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 14:59:28 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/28 10:32:57 by lfabbro          ###   ########.fr       */
+/*   Updated: 2017/01/30 15:22:34 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ char		**ft_strsplit(char const *str, char div)
 
 	i = 0;
 	j = 0;
+	if (!str)
+		return (NULL);
 	nwords = ft_nwords(str, div);
 	if ((tab = ft_tabnew(nwords)) == NULL)
 		return (NULL);
