@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 13:10:33 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/15 21:01:25 by lfabbro          ###   ########.fr       */
+/*   Updated: 2017/02/17 17:16:33 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <signal.h>
 # include "libft.h"
 
+# define SH_NAME	"minishell"
 # define PATH		"/usr/bin:/bin:/usr/sbin:/sbin"
 
 typedef struct		s_env
@@ -70,10 +71,9 @@ void				ft_sig_handler(int sig);
 **		Tools
 */
 int					ft_matchquotes(char *str);
-int					ft_issetenv(char **env, char *name);
+char				*ft_issetenv(char **env, char *name);
+char				*ft_getenv(char **env, char *name);
 void				ft_env_free(t_env *e);
-char				*ft_find_name(char **env, char *name);
-char				*ft_find_value(char **env, char *name);
 
 /*
 **		Builtins

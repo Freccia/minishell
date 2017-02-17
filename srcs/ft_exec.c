@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:22:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/07 00:08:57 by lfabbro          ###   ########.fr       */
+/*   Updated: 2017/02/17 17:17:06 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char			**ft_find_paths(char **env)
 
 	paths = NULL;
 	value = NULL;
-	if ((value = ft_find_value(env, "PATH")) == NULL)
+	if ((value = ft_getenv(env, "PATH")) == NULL)
 		paths = ft_strsplit(PATH, ':');
 	else
 	{

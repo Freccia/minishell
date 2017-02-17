@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 20:03:34 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/07 00:05:01 by lfabbro          ###   ########.fr       */
+/*   Updated: 2017/02/17 16:54:36 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,6 @@ int			ft_matchquotes(char *s)
 	return (0);
 }
 
-int			ft_issetenv(char **env, char *name)
-{
-	char	*tmp;
-
-	if ((tmp = ft_find_name(env, name)))
-	{
-		free(tmp);
-		return (1);
-	}
-	free(tmp);
-	return (0);
-}
-
 void		ft_env_free(t_env *e)
 {
 	if (e->line)
@@ -55,7 +42,7 @@ void		ft_env_free(t_env *e)
 	ft_free_tab(e->env);
 }
 
-char		*ft_find_name(char **env, char *name)
+char		*ft_issetenv(char **env, char *name)
 {
 	char	*eval;
 	int		i;
@@ -69,7 +56,7 @@ char		*ft_find_name(char **env, char *name)
 			if (ft_strnequ(env[i], eval, ft_strlen(eval)))
 			{
 				free(eval);
-				return (ft_strdup(env[i]));
+				return (env[i]);
 			}
 		}
 	}
@@ -77,16 +64,16 @@ char		*ft_find_name(char **env, char *name)
 	return (NULL);
 }
 
-char		*ft_find_value(char **env, char *name)
+char		*ft_getenv(char **env, char *name)
 {
 	char	*value;
 	char	*tmp;
 
 	value = NULL;
-	if ((tmp = ft_find_name(env, name)) != NULL)
+	tmp = NULL;
+	if ((tmp = ft_issetenv(env, name)) != NULL)
 	{
 		value = ft_strdup(ft_strchr(tmp, '=') + 1);
-		free(tmp);
 	}
 	return (value);
 }

@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 17:15:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/12/15 19:27:34 by lfabbro          ###   ########.fr       */
+/*   Updated: 2017/02/17 17:08:53 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int				main(int ac, char **av, char **env)
 {
 	t_env	e;
 
-	ft_banner();
 	ft_init(&e, ac, av, env);
+	ft_banner();
 	ft_set_sig_handler();
 	while (e.x)
 	{
